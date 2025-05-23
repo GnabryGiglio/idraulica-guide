@@ -1,0 +1,1577 @@
+                <div class="diagram">
+                    <h4>Spinta su Parete Verticale</h4>
+                    <svg width="500" height="350" viewBox="0 0 500 350">
+                        <!-- Contenitore con acqua -->
+                        <rect x="50" y="50" width="200" height="250" fill="#74b9ff" opacity="0.4"/>
+                        
+                        <!-- Parete -->
+                        <rect x="250" y="50" width="20" height="250" fill="#636e72"/>
+                        
+                        <!-- Superficie libera -->
+                        <line x1="50" y1="50" x2="250" y2="50" stroke="#0984e3" stroke-width="3"/>
+                        
+                        <!-- Distribuzione pressione -->
+                        <polygon points="270,50 270,300 370,300 270,50" fill="#e17055" opacity="0.6"/>
+                        
+                        <!-- Dimensioni -->
+                        <line x1="30" y1="50" x2="30" y2="300" stroke="#2d3436" stroke-width="1"/>
+                        <text x="15" y="180" font-size="12" fill="#2d3436">H</text>
+                        
+                        <!-- Baricentro -->
+                        <circle cx="260" cy="175" r="5" fill="#00b894"/>
+                        <text x="275" y="180" font-size="12" fill="#00b894">G (baricentro)</text>
+                        
+                        <!-- Centro di spinta -->
+                        <circle cx="260" cy="217" r="5" fill="#e17055"/>
+                        <text x="275" y="222" font-size="12" fill="#e17055">C (centro spinta)</text>
+                        
+                        <!-- Spinta risultante -->
+                        <polygon points="260,175 300,175 295,180" fill="#fd79a8"/>
+                        <text x="310" y="180" font-size="14" fill="#fd79a8" font-weight="bold">S = γ·h_G·A</text>
+                        
+                        <!-- Etichette -->
+                        <text x="30" y="40" font-size="12" fill="#0984e3">Superficie libera</text>
+                        <text x="390" y="50" font-size="12" fill="#e17055">p = 0</text>
+                        <text x="390" y="300" font-size="12" fill="#e17055">p = γH</text>
+                        
+                        <!-- Frecce di pressione -->
+                        <g fill="#e17055" opacity="0.7">
+                            <polygon points="270,100 285,100 280,105"/>
+                            <polygon points="270,150 300,150 295,155"/>
+                            <polygon points="270,200 315,200 310,205"/>
+                            <polygon points="270,250 330,250 325,255"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>📍 Centro di Spinta</h3>
+                    <div style="font-size: 20px; margin: 15px 0;">
+                        h_C = h_G + I_G/(h_G × A)
+                    </div>
+                    <p>dove: h_C = profondità centro di spinta [m], I_G = momento d'inerzia baricentrico [m⁴]</p>
+                </div>
+                
+                <div class="info">
+                    <strong>💡 Proprietà Importante:</strong> Il centro di spinta si trova sempre più in basso del baricentro geometrico della superficie. Questo è fondamentale per l'equilibrio delle strutture.
+                </div>
+                
+                <h3>📏 Momenti d'Inerzia per Forme Comuni:</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Forma</th>
+                        <th>Dimensioni</th>
+                        <th>Area (A)</th>
+                        <th>Momento d'Inerzia (I_G)</th>
+                    </tr>
+                    <tr>
+                        <td>Rettangolo</td>
+                        <td>base b, altezza h</td>
+                        <td>b × h</td>
+                        <td>b × h³/12</td>
+                    </tr>
+                    <tr>
+                        <td>Quadrato</td>
+                        <td>lato a</td>
+                        <td>a²</td>
+                        <td>a⁴/12</td>
+                    </tr>
+                    <tr>
+                        <td>Cerchio</td>
+                        <td>raggio r</td>
+                        <td>π × r²</td>
+                        <td>π × r⁴/4</td>
+                    </tr>
+                    <tr>
+                        <td>Triangolo</td>
+                        <td>base b, altezza h</td>
+                        <td>b × h/2</td>
+                        <td>b × h³/36</td>
+                    </tr>
+                </table>
+                
+                <div class="principle-box">
+                    <h3>🌊 Spinta su Superficie Curva</h3>
+                    <p style="font-size: 16px; margin: 15px 0;">
+                        Per superfici curve, la spinta si scompone in:
+                    </p>
+                    <ul style="color: white;">
+                        <li><strong>Componente orizzontale:</strong> Uguale alla spinta sulla proiezione verticale</li>
+                        <li><strong>Componente verticale:</strong> Uguale al peso del volume di fluido sovrastante</li>
+                    </ul>
+                </div>
+                
+                <div class="diagram">
+                    <h4>Spinta su Superficie Curva</h4>
+                    <svg width="400" height="300" viewBox="0 0 400 300">
+                        <!-- Fluido -->
+                        <path d="M 50,50 L 250,50 L 250,200 Q 200,150 150,200 L 50,200 Z" fill="#74b9ff" opacity="0.4"/>
+                        
+                        <!-- Superficie curva -->
+                        <path d="M 150,200 Q 200,150 250,200" stroke="#2d3436" stroke-width="3" fill="none"/>
+                        
+                        <!-- Superficie libera -->
+                        <line x1="50" y1="50" x2="250" y2="50" stroke="#0984e3" stroke-width="3"/>
+                        
+                        <!-- Componenti spinta -->
+                        <polygon points="200,175 240,175 235,180" fill="#e17055"/>
+                        <text x="250" y="180" font-size="12" fill="#e17055">S_h</text>
+                        
+                        <polygon points="195,175 205,175 200,155" fill="#00b894"/>
+                        <text x="210" y="155" font-size="12" fill="#00b894">S_v</text>
+                        
+                        <!-- Spinta risultante -->
+                        <polygon points="200,175 225,155 220,160" fill="#fd79a8"/>
+                        <text x="230" y="150" font-size="12" fill="#fd79a8">S_risultante</text>
+                        
+                        <!-- Volume di fluido -->
+                        <path d="M 150,200 Q 200,150 250,200 L 250,50 Q 200,100 150,50 Z" 
+                              fill="#00cec9" opacity="0.3" stroke="#00b894" stroke-dasharray="3,3"/>
+                        
+                        <text x="200" y="125" text-anchor="middle" font-size="12" fill="#00b894">Volume fluido</text>
+                        <text x="200" y="275" text-anchor="middle" font-size="14" fill="#2d3436">
+                            S_v = peso del volume di fluido sovrastante
+                        </text>
+                    </svg>
+                </div>
+                
+                <h3>🏗️ Applicazioni Pratiche:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Dighe a Gravità</h4>
+                        <p>Calcolo della spinta dell'acqua</p>
+                        <p>Verifica stabilità al ribaltamento</p>
+                        <p>Dimensionamento della sezione</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Muri di Sostegno</h4>
+                        <p>Spinta del terreno saturo d'acqua</p>
+                        <p>Sottospinta della falda</p>
+                        <p>Drenaggi e sistemi di scarico</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Paratie e Palancole</h4>
+                        <p>Spinta dell'acqua e del terreno</p>
+                        <p>Calcolo dei momenti flettenti</p>
+                        <p>Dimensionamento strutturale</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Serbatoi e Vasche</h4>
+                        <p>Spinta sulle pareti</p>
+                        <p>Pressione sul fondo</p>
+                        <p>Verifica delle sollecitazioni</p>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ Errori Comuni:</strong>
+                    <ul>
+                        <li>Confondere il baricentro con il centro di spinta</li>
+                        <li>Usare l'altezza totale invece della profondità del baricentro</li>
+                        <li>Dimenticare le unità di misura (forze in N, non in kg)</li>
+                        <li>Non considerare la distribuzione triangolare della pressione</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TAB ESEMPI -->
+            <div id="esempi" class="tab-content">
+                <h2>💡 Esempi Risolti Passo-Passo</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 1: Pressione in un Serbatoio</div>
+                    
+                    <p><strong>Problema:</strong> In un serbatoio d'acqua, calcolare la pressione a 3 m di profondità dalla superficie libera. Calcolare anche la pressione assoluta se la pressione atmosferica è 101.325 kPa.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Identificare i dati</h4>
+                        <p>Profondità: h = 3 m</p>
+                        <p>Peso specifico dell'acqua: γ = 9810 N/m³</p>
+                        <p>Pressione atmosferica: p₀ = 101.325 kPa = 101.325 × 10³ Pa</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Calcolare la pressione relativa</h4>
+                        <p>p_rel = γ × h = 9810 × 3 = <strong>29.430 Pa = 29,43 kPa</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Calcolare la pressione assoluta</h4>
+                        <p>p_abs = p_rel + p₀ = 29,43 + 101,325 = <strong>130,755 kPa</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Esprimere in altezza piezometrica</h4>
+                        <p>Altezza piezometrica = p_rel/γ = 29.430/9810 = <strong>3,0 m</strong></p>
+                        <p>(Come atteso, uguale alla profondità!)</p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 2: Spinta su Parete Rettangolare</div>
+                    
+                    <p><strong>Problema:</strong> Una parete rettangolare verticale di dimensioni 4 m (larghezza) × 6 m (altezza) è completamente immersa in acqua. Il bordo superiore si trova a 2 m dalla superficie libera. Calcolare la spinta totale e la posizione del centro di spinta.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Identificare la geometria</h4>
+                        <p>Larghezza: b = 4 m</p>
+                        <p>Altezza: h = 6 m</p>
+                        <p>Area: A = b × h = 4 × 6 = 24 m²</p>
+                        <p>Profondità bordo superiore: h₁ = 2 m</p>
+                        <p>Profondità bordo inferiore: h₂ = 2 + 6 = 8 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Calcolare la profondità del baricentro</h4>
+                        <p>h_G = h₁ + h/2 = 2 + 6/2 = 2 + 3 = <strong>5 m</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Calcolare la spinta totale</h4>
+                        <p>S = γ × h_G × A = 9810 × 5 × 24 = <strong>1.177.200 N = 1177,2 kN</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Calcolare il momento d'inerzia baricentrico</h4>
+                        <p>I_G = b × h³/12 = 4 × 6³/12 = 4 × 216/12 = <strong>72 m⁴</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 5: Calcolare la posizione del centro di spinta</h4>
+                        <p>h_C = h_G + I_G/(h_G × A) = 5 + 72/(5 × 24) = 5 + 72/120 = 5 + 0,6 = <strong>5,6 m</strong></p>
+                        <p>Il centro di spinta si trova 0,6 m sotto il baricentro</p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 3: Vasi Comunicanti con Fluidi Diversi</div>
+                    
+                    <p><strong>Problema:</strong> Due vasi comunicanti contengono acqua (γ₁ = 9810 N/m³) nel primo ramo e olio (γ₂ = 8820 N/m³) nel secondo. Se l'altezza dell'acqua è 1,5 m, quale sarà l'altezza dell'olio?</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Applicare il principio dei vasi comunicanti</h4>
+                        <p>La pressione sul fondo deve essere uguale nei due rami:</p>
+                        <p>p₁ = p₂</p>
+                        <p>γ₁ × h₁ = γ₂ × h₂</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Sostituire i valori noti</h4>
+                        <p>9810 × 1,5 = 8820 × h₂</p>
+                        <p>14.715 = 8820 × h₂</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Calcolare l'altezza dell'olio</h4>
+                        <p>h₂ = 14.715/8820 = <strong>1,67 m</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Interpretazione fisica</h4>
+                        <p>L'olio, essendo meno denso dell'acqua, raggiunge un'altezza maggiore per equilibrare la stessa pressione al fondo.</p>
+                        <p>Rapporto altezze: h₂/h₁ = γ₁/γ₂ = 9810/8820 = 1,11</p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 4: Martinetto Idraulico</div>
+                    
+                    <p><strong>Problema:</strong> Un martinetto idraulico ha un pistone piccolo di diametro 2 cm e un pistone grande di diametro 20 cm. Se applico una forza di 100 N al pistone piccolo, quale forza ottengo al pistone grande?</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Calcolare le aree dei pistoni</h4>
+                        <p>A₁ = π × (d₁/2)² = π × (0,02/2)² = π × 0,01² = <strong>3,14 × 10⁻⁴ m²</strong></p>
+                        <p>A₂ = π × (d₂/2)² = π × (0,20/2)² = π × 0,10² = <strong>3,14 × 10⁻² m²</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Applicare il principio di Pascal</h4>
+                        <p>La pressione è la stessa nei due pistoni:</p>
+                        <p>p₁ = p₂</p>
+                        <p>F₁/A₁ = F₂/A₂</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Calcolare la forza amplificata</h4>
+                        <p>F₂ = F₁ × (A₂/A₁) = 100 × (3,14 × 10⁻²)/(3,14 × 10⁻⁴)</p>
+                        <p>F₂ = 100 × 100 = <strong>10.000 N = 10 kN</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Calcolare il rapporto di amplificazione</h4>
+                        <p>Rapporto di amplificazione = A₂/A₁ = (d₂/d₁)² = (20/2)² = <strong>100</strong></p>
+                        <p>La forza viene amplificata di 100 volte!</p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>🎯 Strategia Generale di Risoluzione:</strong>
+                    <ol>
+                        <li>Identificare chiaramente la geometria e i dati del problema</li>
+                        <li>Scegliere il principio fisico appropriato (Stevino, Pascal, Archimede)</li>
+                        <li>Fare sempre attenzione alle unità di misura</li>
+                        <li>Per la spinta idrostatica: prima la spinta, poi il centro di spinta</li>
+                        <li>Verificare sempre che il risultato abbia senso fisico</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- TAB CALCOLATORE -->
+            <div id="calcolatore" class="tab-content">
+                <h2>🧮 Calcolatore Idrostatica</h2>
+                
+                <div class="calculator">
+                    <h3>Calcoli di Idrostatica</h3>
+                    
+                    <div class="input-group">
+                        <label>Tipo di Calcolo:</label>
+                        <select id="tipoCalcoloIdro" onchange="toggleCalcoloInputs()">
+                            <option value="pressione">Calcola Pressione</option>
+                            <option value="spinta">Calcola Spinta su Parete</option>
+                            <option value="martinetto">Martinetto Idraulico</option>
+                            <option value="galleggiamento">Principio di Archimede</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Sezione Pressione -->
+                    <div id="pressioneInputs">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Profondità h (m):</label>
+                                    <input type="number" id="profondita" value="3" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Fluido:</label>
+                                    <select id="fluido">
+                                        <option value="9810">Acqua (γ = 9810 N/m³)</option>
+                                        <option value="8820">Olio leggero (γ = 8820 N/m³)</option>
+                                        <option value="7850">Benzina (γ = 7850 N/m³)</option>
+                                        <option value="12740">Mercurio (γ = 12740 N/m³)</option>
+                                        <option value="custom">Personalizzato</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-group" id="pesoSpecificoCustom" style="display: none;">
+                                    <label>Peso specifico γ (N/m³):</label>
+                                    <input type="number" id="pesoSpecificoValue" value="9810" step="1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Pressione atmosferica (kPa):</label>
+                                    <input type="number" id="pressioneAtm" value="101.325" step="0.001">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Tipo risultato:</label>
+                                    <select id="tipoRisultato">
+                                        <option value="relativa">Pressione relativa</option>
+                                        <option value="assoluta">Pressione assoluta</option>
+                                        <option value="entrambe">Entrambe</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Spinta -->
+                    <div id="spintaInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Forma superficie:</label>
+                                    <select id="formaSuperficie">
+                                        <option value="rettangolare">Rettangolare</option>
+                                        <option value="quadrata">Quadrata</option>
+                                        <option value="circolare">Circolare</option>
+                                        <option value="triangolare">Triangolare</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-group" id="dimLarghezza">
+                                    <label>Larghezza b (m):</label>
+                                    <input type="number" id="larghezzaSuperficie" value="4" step="0.1">
+                                </div>
+                                
+                                <div class="input-group" id="dimAltezza">
+                                    <label>Altezza h (m):</label>
+                                    <input type="number" id="altezzaSuperficie" value="6" step="0.1">
+                                </div>
+                                
+                                <div class="input-group" id="dimRaggio" style="display: none;">
+                                    <label>Raggio r (m):</label>
+                                    <input type="number" id="raggioSuperficie" value="2" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Profondità bordo superiore (m):</label>
+                                    <input type="number" id="profBordoSup" value="2" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Peso specifico γ (N/m³):</label>
+                                    <input type="number" id="pesoSpecificoSpinta" value="9810" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Calcola anche:</label>
+                                    <select id="calcolaAnche">
+                                        <option value="solo_spinta">Solo spinta totale</option>
+                                        <option value="con_centro">Spinta e centro di spinta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Martinetto -->
+                    <div id="martinettoInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Diametro pistone piccolo (cm):</label>
+                                    <input type="number" id="diametroPiccolo" value="2" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Diametro pistone grande (cm):</label>
+                                    <input type="number" id="diametroGrande" value="20" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Forza applicata (N):</label>
+                                    <input type="number" id="forzaApplicata" value="100" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Calcola:</label>
+                                    <select id="calcolaMartinetto">
+                                        <option value="forza">Forza amplificata</option>
+                                        <option value="rapporto">Rapporto di amplificazione</option>
+                                        <option value="entrambi">Entrambi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Galleggiamento -->
+                    <div id="galleggiamentoInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Volume corpo (m³):</label>
+                                    <input type="number" id="volumeCorpo" value="0.5" step="0.01">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Peso corpo (N):</label>
+                                    <input type="number" id="pesoCorpo" value="3000" step="10">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Fluido:</label>
+                                    <select id="fluidoGalleggiamento">
+                                        <option value="9810">Acqua dolce</option>
+                                        <option value="10030">Acqua marina</option>
+                                        <option value="8820">Olio</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Calcola:</label>
+                                    <select id="calcolaGalleggiamento">
+                                        <option value="spinta">Spinta di Archimede</option>
+                                        <option value="equilibrio">Condizione di equilibrio</option>
+                                        <option value="affondamento">Volume immerso</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="calcolaIdrostatica()">⚖️ Calcola</button>
+                    <button class="btn" onclick="resetCalcolatoreIdro()">🔄 Reset</button>
+                    
+                    <div class="result" id="risultatoIdro">
+                        Seleziona il tipo di calcolo e inserisci i dati
+                    </div>
+                    
+                    <div id="dettagliIdro" style="display: none; margin-top: 20px;">
+                        <h4 style="color: white;">📊 Dettagli del Calcolo:</h4>
+                        <div id="passiIdro" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB ESERCIZI -->
+            <div id="esercizi" class="tab-content">
+                <h2>📝 Esercizi per Praticare</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 1: Pressione in Profondità</div>
+                    <p><strong>Testo:</strong> Un sommozzatore si trova a 15 m di profondità in acqua dolce. Calcolare la pressione relativa e assoluta che agisce sul suo corpo. (p_atm = 101,325 kPa)</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(1)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro1" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Pressione relativa: p_rel = γ×h = 9810×15 = 147.150 Pa = <strong>147,15 kPa</strong></p>
+                            <p>2. Pressione assoluta: p_abs = p_rel + p_atm = 147,15 + 101,325 = <strong>248,475 kPa</strong></p>
+                            <p>3. In altezza piezometrica: h = p_rel/γ = 147.150/9810 = <strong>15 m</strong> (verifica)</p>
+                            <p><strong>Interpretazione:</strong> Il sommozzatore subisce una pressione circa 2,5 volte quella atmosferica!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 2: Spinta su Porta di Diga</div>
+                    <p><strong>Testo:</strong> Una porta rettangolare di una diga ha dimensioni 3 m × 4 m (altezza). Il bordo superiore si trova a 5 m dalla superficie dell'acqua. Calcolare la spinta totale e il centro di spinta.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(2)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro2" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Area: A = 3×4 = 12 m²</p>
+                            <p>2. Profondità baricentro: h_G = 5 + 4/2 = 7 m</p>
+                            <p>3. Spinta: S = γ×h_G×A = 9810×7×12 = <strong>823.240 N = 823,24 kN</strong></p>
+                            <p>4. Momento d'inerzia: I_G = b×h³/12 = 3×4³/12 = 16 m⁴</p>
+                            <p>5. Centro spinta: h_C = 7 + 16/(7×12) = 7 + 0,19 = <strong>7,19 m</strong></p>
+                            <p><strong>Il centro di spinta è 19 cm sotto il baricentro</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 3: Serbatoio con Manometro</div>
+                    <p><strong>Testo:</strong> Un serbatoio cilindrico contiene acqua fino a 8 m di altezza. Un manometro collegato al fondo indica 95 kPa. Calcolare la pressione nella parte superiore del serbatoio (sopra l'acqua).</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(3)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro3" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Pressione dovuta all'acqua: p_acqua = γ×h = 9810×8 = 78.480 Pa = 78,48 kPa</p>
+                            <p>2. Pressione totale sul fondo: p_fondo = p_gas + p_acqua</p>
+                            <p>3. Pressione del gas: p_gas = p_fondo - p_acqua = 95 - 78,48 = <strong>16,52 kPa</strong></p>
+                            <p><strong>Il gas sopra l'acqua è in pressione (serbatoio chiuso)</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 4: Galleggiamento</div>
+                    <p><strong>Testo:</strong> Un blocco di legno (densità 600 kg/m³) di volume 0,2 m³ galleggia in acqua. Calcolare il volume immerso e la frazione emersa.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(4)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro4" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Peso del blocco: W = ρ_legno×V×g = 600×0,2×9,81 = 1177,2 N</p>
+                            <p>2. All'equilibrio: Spinta di Archimede = Peso</p>
+                            <p>3. γ_acqua×V_immerso = W</p>
+                            <p>4. V_immerso = W/γ_acqua = 1177,2/9810 = <strong>0,12 m³</strong></p>
+                            <p>5. Frazione immersa = 0,12/0,2 = <strong>60%</strong></p>
+                            <p>6. Frazione emersa = 1 - 0,6 = <strong>40%</strong></p>
+                            <p><strong>Nota:</strong> La frazione immersa = ρ_oggetto/ρ_fluido = 600/1000 = 0,6</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 5: Vasi Comunicanti Complessi</div>
+                    <p><strong>Testo:</strong> Due serbatoi sono collegati da un tubo a U riempito di mercurio (γ = 133.280 N/m³). Il serbatoio A contiene acqua con pressione di 50 kPa, il serbatoio B ha pressione di 80 kPa. Calcolare il dislivello del mercurio nel tubo a U.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(5)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro5" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Differenza di pressione: Δp = p_B - p_A = 80 - 50 = 30 kPa = 30.000 Pa</p>
+                            <p>2. Questa differenza è equilibrata dal dislivello del mercurio:</p>
+                            <p>3. Δp = γ_mercurio × Δh</p>
+                            <p>4. Δh = Δp/γ_mercurio = 30.000/133.280 = <strong>0,225 m = 22,5 cm</strong></p>
+                            <p><strong>Il mercurio è più alto di 22,5 cm nel ramo collegato al serbatoio A</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 6: Stabilità di una Diga</div>
+                    <p><strong>Testo:</strong> Una diga a gravità ha altezza 20 m e larghezza alla base 15 m. L'acqua raggiunge un'altezza di 18 m. Calcolare la spinta dell'acqua e verificare se il momento ribaltante è inferiore al momento stabilizzante. (Densità calcestruzzo: 2400 kg/m³)</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneIdro(6)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneIdro6" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. <strong>Spinta dell'acqua (per metro di lunghezza):</strong></p>
+                            <p>   S = γ×h²/2 = 9810×18²/2 = 1.587.780 N/m = 1587,78 kN/m</p>
+                            <p>2. <strong>Centro di spinta:</strong> h_c = 2h/3 = 2×18/3 = 12 m dal fondo</p>
+                            <p>3. <strong>Momento ribaltante:</strong> M_r = S×h_c = 1587,78×12 = 19.053 kN⋅m/m</p>
+                            <p>4. <strong>Peso della diga (sezione triangolare):</strong></p>
+                            <p>   W = γ_cls×A = 2400×9,81×(15×20/2) = 1.765.800 N/m = 1765,8 kN/m</p>
+                            <p>5. <strong>Momento stabilizzante:</strong> M_s = W×(15/3) = 1765,8×5 = 8.829 kN⋅m/m</p>
+                            <p>6. <strong>Verifica:</strong> M_r > M_s → <span style="color: red;">DIGA INSTABILE!</span></p>
+                            <p><strong>Serve aumentare il peso o la larghezza della base</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>💪 Suggerimenti Avanzati:</strong>
+                    <ul>
+                        <li>Sempre distinguere tra pressione relativa e assoluta</li>
+                        <li>Per la spinta: prima calcolare l'area e la profondità del baricentro</li>
+                        <li>Il centro di spinta è sempre più profondo del baricentro</li>
+                        <li>Nel galleggiamento: spinta di Archimede = peso del fluido spostato</li>
+                        <li>Attenzione alle unità di misura: pressioni in Pa, forze in N</li>
+                        <li>In problemi di stabilità, considerare tutti i momenti ribaltanti e stabilizzanti</li>
+                    </ul>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ Errori Frequenti negli Esami:</strong>
+                    <ul>
+                        <li>Confondere la profondità totale con la profondità del baricentro</li>
+                        <li>Dimenticare di convertire kPa in Pa nei calcoli</li>
+                        <li>Usare la formula della spinta senza considerare la geometria</li>
+                        <li>Calcolare il galleggiamento senza applicare l'equilibrio delle forze</li>
+                        <li>Non verificare la coerenza dimensionale delle formule</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Nascondere tutti i contenuti
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Rimuovere classe active da tutti i tab
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrare il contenuto selezionato
+            document.getElementById(tabName).classList.add('active');
+            
+            // Attivare il tab selezionato
+            event.target.classList.add('active');
+        }
+        
+        function toggleCalcoloInputs() {
+            const tipo = document.getElementById('tipoCalcoloIdro').value;
+            
+            // Nascondere tutti i gruppi di input
+            document.getElementById('pressioneInputs').style.display = 'none';
+            document.getElementById('spintaInputs').style.display = 'none';
+            document.getElementById('martinettoInputs').style.display = 'none';
+            document.getElementById('galleggiamentoInputs').style.display = 'none';
+            
+            // Mostrare il gruppo selezionato
+            if (tipo === 'pressione') {
+                document.getElementById('pressioneInputs').style.display = 'block';
+            } else if (tipo === 'spinta') {
+                document.getElementById('spintaInputs').style.display = 'block';
+            } else if (tipo === 'martinetto') {
+                document.getElementById('martinettoInputs').style.display = 'block';
+            } else if (tipo === 'galleggiamento') {
+                document.getElementById('galleggiamentoInputs').style.display = 'block';
+            }
+        }
+        
+        function togglePesoSpecificoCustom() {
+            const fluido = document.getElementById('fluido').value;
+            const customGroup = document.getElementById('pesoSpecificoCustom');
+            
+            if (fluido === 'custom') {
+                customGroup.style.display = 'block';
+            } else {
+                customGroup.style.display = 'none';
+            }
+        }
+        
+        function toggleFormaSuperficie() {
+            const forma = document.getElementById('formaSuperficie').value;
+            
+            document.getElementById('dimLarghezza').style.display = 'block';
+            document.getElementById('dimAltezza').style.display = 'block';
+            document.getElementById('dimRaggio').style.display = 'none';
+            
+            if (forma === 'circolare') {
+                document.getElementById('dimLarghezza').style.display = 'none';
+                document.getElementById('dimAltezza').style.display = 'none';
+                document.getElementById('dimRaggio').style.display = 'block';
+            } else if (forma === 'quadrata') {
+                document.getElementById('dimAltezza').style.display = 'none';
+                document.getElementById('dimLarghezza').querySelector('label').textContent = 'Lato a (m):';
+            } else if (forma === 'rettangolare') {
+                document.getElementById('dimLarghezza').querySelector('label').textContent = 'Larghezza b (m):';
+            } else if (forma === 'triangolare') {
+                document.getElementById('dimLarghezza').querySelector('label').textContent = 'Base b (m):';
+            }
+        }
+        
+        function calcolaIdrostatica() {
+            const tipo = document.getElementById('tipoCalcoloIdro').value;
+            let risultato = '';
+            let dettagli = '';
+            
+            if (tipo === 'pressione') {
+                const h = parseFloat(document.getElementById('profondita').value);
+                const gamma = document.getElementById('fluido').value === 'custom' ? 
+                    parseFloat(document.getElementById('pesoSpecificoValue').value) : 
+                    parseFloat(document.getElementById('fluido').value);
+                const p_atm = parseFloat(document.getElementById('pressioneAtm').value) * 1000; // Conversione kPa->Pa
+                const tipoRis = document.getElementById('tipoRisultato').value;
+                
+                const p_rel = gamma * h;
+                const p_abs = p_rel + p_atm;
+                
+                if (tipoRis === 'relativa') {
+                    risultato = `Pressione relativa: ${(p_rel/1000).toFixed(2)} kPa`;
+                } else if (tipoRis === 'assoluta') {
+                    risultato = `Pressione assoluta: ${(p_abs/1000).toFixed(2)} kPa`;
+                } else {
+                    risultato = `P. relativa: ${(p_rel/1000).toFixed(2)} kPa | P. assoluta: ${(p_abs/1000).toFixed(2)} kPa`;
+                }
+                
+                dettagli = `
+                    <strong>Calcolo pressione:</strong><br>
+                    • Profondità: ${h} m<br>
+                    • Peso specifico: ${gamma} N/m³<br>
+                    • Pressione relativa: p = γ×h = ${gamma}×${h} = ${p_rel} Pa<br>
+                    • Pressione assoluta: p_abs = p_rel + p_atm = ${p_rel} + ${p_atm} = ${p_abs} Pa<br>
+                    • Altezza piezometrica: ${h} m
+                `;
+                
+            } else if (tipo === 'spinta') {
+                const forma = document.getElementById('formaSuperficie').value;
+                const gamma = parseFloat(document.getElementById('pesoSpecificoSpinta').value);
+                const h_sup = parseFloat(document.getElementById('profBordoSup').value);
+                const calcolaAnche = document.getElementById('calcolaAnche').value;
+                
+                let A, I_G, h_alt;
+                
+                if (forma === 'rettangolare') {
+                    const b = parseFloat(document.getElementById('larghezzaSuperficie').value);
+                    const h = parseFloat(document.getElementById('altezzaSuperficie').value);
+                    A = b * h;
+                    I_G = b * Math.pow(h, 3) / 12;
+                    h_alt = h;
+                } else if (forma === 'quadrata') {
+                    const a = parseFloat(document.getElementById('larghezzaSuperficie').value);
+                    A = a * a;
+                    I_G = Math.pow(a, 4) / 12;
+                    h_alt = a;
+                } else if (forma === 'circolare') {
+                    const r = parseFloat(document.getElementById('raggioSuperficie').value);
+                    A = Math.PI * r * r;
+                    I_G = Math.PI * Math.pow(r, 4) / 4;
+                    h_alt = 2 * r;
+                } else if (forma === 'triangolare') {
+                    const b = parseFloat(document.getElementById('larghezzaSuperficie').value);
+                    const h = parseFloat(document.getElementById('altezzaSuperficie').value);
+                    A = b * h / 2;
+                    I_G = b * Math.pow(h, 3) / 36;
+                    h_alt = h;
+                }
+                
+                const h_G = h_sup + h_alt / 2;
+                const S = gamma * h_G * A;
+                
+                if (calcolaAnche === 'solo_spinta') {
+                    risultato = `Spinta totale: ${(S/1000).toFixed(1)} kN`;
+                } else {
+                    const h_C = h_G + I_G / (h_G * A);
+                    risultato = `Spinta: ${(S/1000).toFixed(1)} kN | Centro spinta: ${h_C.toFixed(2)} m`;
+                }
+                
+                dettagli = `
+                    <strong>Calcolo spinta idrostatica:</strong><br>
+                    • Forma: ${forma}<br>
+                    • Area superficie: ${A.toFixed(2)} m²<br>
+                    • Profondità baricentro: h_G = ${h_sup} + ${(h_alt/2).toFixed(1)} = ${h_G.toFixed(1)} m<br>
+                    • Spinta: S = γ×h_G×A = ${gamma}×${h_G.toFixed(1)}×${A.toFixed(2)} = ${S.toFixed(0)} N<br>
+                    ${calcolaAnche === 'con_centro' ? 
+                        `• Momento d'inerzia: I_G = ${I_G.toFixed(2)} m⁴<br>
+                         • Centro spinta: h_C = ${h_G.toFixed(1)} + ${I_G.toFixed(2)}/(${h_G.toFixed(1)}×${A.toFixed(2)}) = ${(h_G + I_G/(h_G*A)).toFixed(2)} m` : ''}
+                `;
+                
+            } else if (tipo === 'martinetto') {
+                const d1 = parseFloat(document.getElementById('diametroPiccolo').value) / 100; // cm->m
+                const d2 = parseFloat(document.getElementById('diametroGrande').value) / 100; // cm->m
+                const F1 = parseFloat(document.getElementById('forzaApplicata').value);
+                const calcola = document.getElementById('calcolaMartinetto').value;
+                
+                const A1 = Math.PI * Math.pow(d1/2, 2);
+                const A2 = Math.PI * Math.pow(d2/2, 2);
+                const rapporto = A2 / A1;
+                const F2 = F1 * rapporto;
+                
+                if (calcola === 'forza') {
+                    risultato = `Forza amplificata: ${F2.toFixed(0)} N`;
+                } else if (calcola === 'rapporto') {
+                    risultato = `Rapporto amplificazione: ${rapporto.toFixed(1)}`;
+                } else {
+                    risultato = `Forza: ${F2.toFixed(0)} N | Rapporto: ${rapporto.toFixed(1)}`;
+                }
+                
+                dettagli = `
+                    <strong>Martinetto idraulico:</strong><br>
+                    • Diametro piccolo: ${d1*100} cm → Area: ${A1.toFixed(6)} m²<br>
+                    • Diametro grande: ${d2*100} cm → Area: ${A2.toFixed(4)} m²<br>
+                    • Rapporto aree: A₂/A₁ = ${rapporto.toFixed(1)}<br>
+                    • Forza applicata: ${F1} N<br>
+                    • Forza amplificata: F₂ = F₁ × (A₂/A₁) = ${F1} × ${rapporto.toFixed(1)} = ${F2.toFixed(0)} N
+                `;
+                
+            } else if (tipo === 'galleggiamento') {
+                const V = parseFloat(document.getElementById('volumeCorpo').value);
+                const W = parseFloat(document.getElementById('pesoCorpo').value);
+                const gamma_fluido = parseFloat(document.getElementById('fluidoGalleggiamento').value);
+                const calcola = document.getElementById('calcolaGalleggiamento').value;
+                
+                const spinta_max = gamma_fluido * V;
+                const V_immerso = W / gamma_fluido;
+                const frazione_immersa = V_immerso / V;
+                
+                if (calcola === 'spinta') {
+                    risultato = `Spinta di Archimede: ${spinta_max.toFixed(0)} N`;
+                } else if (calcola === 'equilibrio') {
+                    if (W <= spinta_max) {
+                        risultato = `Galleggia (W < Spinta massima)`;
+                    } else {
+                        risultato = `Affonda (W > Spinta massima)`;
+                    }
+                } else {
+                    risultato = `Volume immerso: ${V_immerso.toFixed(3)} m³ (${(frazione_immersa*100).toFixed(1)}%)`;
+                }
+                
+                dettagli = `
+                    <strong>Galleggiamento:</strong><br>
+                    • Volume corpo: ${V} m³<br>
+                    • Peso corpo: ${W} N<br>
+                    • Peso specifico fluido: ${gamma_fluido} N/m³<br>
+                    • Spinta massima: ${spinta_max.toFixed(0)} N<br>
+                    • Volume immerso: ${V_immerso.toFixed(3)} m³<br>
+                    • Frazione immersa: ${(frazione_immersa*100).toFixed(1)}%<br>
+                    • Condizione: ${W <= spinta_max ? 'GALLEGGIA' : 'AFFONDA'}
+                `;
+            }
+            
+            document.getElementById('risultatoIdro').innerHTML = risultato;
+            document.getElementById('passiIdro').innerHTML = dettagli;
+            document.getElementById('dettagliIdro').style.display = 'block';
+        }
+        
+        function resetCalcolatoreIdro() {
+            // Reset di tutti i campi ai valori di default
+            document.getElementById('tipoCalcoloIdro').selectedIndex = 0;
+            document.getElementById('profondita').value = '3';
+            document.getElementById('fluido').selectedIndex = 0;
+            document.getElementById('pressioneAtm').value = '101.325';
+            document.getElementById('tipoRisultato').selectedIndex = 0;
+            
+            // Reset risultati
+            document.getElementById('risultatoIdro').innerHTML = 'Seleziona il tipo di calcolo e inserisci i dati';
+            document.getElementById('dettagliIdro').style.display = 'none';
+            
+            // Aggiorna le sezioni visibili
+            toggleCalcoloInputs();
+        }
+        
+        function mostraSoluzioneIdro(numeroEsercizio) {
+            const soluzione = document.getElementById(`soluzioneIdro${numeroEsercizio}`);
+            if (soluzione.style.display === 'none' || soluzione.style.display === '') {
+                soluzione.style.display = 'block';
+            } else {
+                soluzione.style.display = 'none';
+            }
+        }
+        
+        // Event listeners
+        document.getElementById('tipoCalcoloIdro').addEventListener('change', toggleCalcoloInputs);
+        document.getElementById('fluido').addEventListener('change', togglePesoSpecificoCustom);
+        document.getElementById('formaSuperficie').addEventListener('change', toggleFormaSuperficie);
+        
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleCalcoloInputs();
+            togglePesoSpecificoCustom();
+            toggleFormaSuperficie();
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idrostatica - Guida Interattiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-tab:last-child {
+            border-right: none;
+        }
+        
+        .nav-tab.active {
+            background: #fd79a8;
+            color: white;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: #e9ecef;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+        }
+        
+        .law-box {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-left: 5px solid #6c5ce7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .calculator {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(116, 185, 255, 0.3);
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            background: #00cec9;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            background: #00b894;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+        }
+        
+        .result {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .step {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .step h4 {
+            color: #7b1fa2;
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #a29bfe;
+        }
+        
+        .highlight {
+            background: #fff3e0;
+            border: 1px solid #ffcc02;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight strong {
+            color: #e65100;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .warning strong {
+            color: #c62828;
+        }
+        
+        .info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .info strong {
+            color: #1565c0;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .exercise-container {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .exercise-title {
+            background: #a29bfe;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .pressure-diagram {
+            background: linear-gradient(to bottom, #e3f2fd 0%, #1976d2 100%);
+            height: 200px;
+            border-radius: 10px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .force-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #a29bfe;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .principle-box {
+            background: linear-gradient(135deg, #00cec9, #00b894);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+        }
+        
+        .fluid-container {
+            background: linear-gradient(to bottom, rgba(116, 185, 255, 0.3) 0%, rgba(116, 185, 255, 0.8) 100%);
+            border: 2px solid #74b9ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .surface-level {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #0984e3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚖️ Idrostatica</h1>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('teoria')">📚 Teoria</button>
+            <button class="nav-tab" onclick="showTab('leggi')">⚖️ Leggi Fondamentali</button>
+            <button class="nav-tab" onclick="showTab('spinta')">💪 Spinta Idrostatica</button>
+            <button class="nav-tab" onclick="showTab('esempi')">💡 Esempi</button>
+            <button class="nav-tab" onclick="showTab('calcolatore')">🧮 Calcolatore</button>
+            <button class="nav-tab" onclick="showTab('esercizi')">📝 Esercizi</button>
+        </div>
+        
+        <div class="content">
+            <!-- TAB TEORIA -->
+            <div id="teoria" class="tab-content active">
+                <h2>🎯 Che cos'è l'Idrostatica?</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    L'<strong>idrostatica</strong> studia l'equilibrio dei fluidi in quiete. È la base fondamentale per comprendere tutti i fenomeni idraulici e le strutture che interagiscono con l'acqua.
+                </p>
+                
+                <div class="highlight">
+                    <strong>Concetto chiave:</strong> In un fluido in quiete, le forze sono solo di pressione (perpendicolari alle superfici) e di peso. Non ci sono forze tangenziali.
+                </div>
+                
+                <div class="diagram">
+                    <h4>Elemento di Fluido in Equilibrio</h4>
+                    <svg width="400" height="300" viewBox="0 0 400 300">
+                        <!-- Contenitore -->
+                        <rect x="50" y="80" width="300" height="180" fill="none" stroke="#2d3436" stroke-width="2"/>
+                        
+                        <!-- Fluido -->
+                        <rect x="50" y="150" width="300" height="110" fill="#74b9ff" opacity="0.6"/>
+                        
+                        <!-- Superficie libera -->
+                        <line x1="50" y1="150" x2="350" y2="150" stroke="#0984e3" stroke-width="3"/>
+                        <text x="380" y="155" font-size="12" fill="#0984e3">Superficie libera</text>
+                        
+                        <!-- Elemento di fluido -->
+                        <rect x="180" y="200" width="40" height="30" fill="#fd79a8" opacity="0.8" stroke="#e84393" stroke-width="2"/>
+                        
+                        <!-- Pressioni -->
+                        <polygon points="160,215 180,215 175,220" fill="#e17055"/>
+                        <text x="140" y="220" font-size="10" fill="#e17055">p₁</text>
+                        
+                        <polygon points="220,215 240,215 235,220" fill="#e17055"/>
+                        <text x="245" y="220" font-size="10" fill="#e17055">p₂</text>
+                        
+                        <polygon points="195,190 205,190 200,195" fill="#e17055"/>
+                        <text x="210" y="185" font-size="10" fill="#e17055">p_top</text>
+                        
+                        <polygon points="195,240 205,240 200,245" fill="#e17055"/>
+                        <text x="210" y="255" font-size="10" fill="#e17055">p_bottom</text>
+                        
+                        <!-- Peso -->
+                        <polygon points="195,215 205,215 200,225" fill="#00b894"/>
+                        <text x="210" y="235" font-size="10" fill="#00b894">W = γ·V</text>
+                        
+                        <!-- Quote -->
+                        <line x1="30" y1="150" x2="30" y2="215" stroke="#636e72" stroke-width="1"/>
+                        <text x="15" y="185" font-size="12" fill="#636e72">h</text>
+                        
+                        <!-- Atmosfera -->
+                        <text x="200" y="130" text-anchor="middle" font-size="12" fill="#636e72">p₀ = pressione atmosferica</text>
+                    </svg>
+                </div>
+                
+                <h3>🔍 Proprietà Fondamentali dei Fluidi:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Densità (ρ)</h4>
+                        <p>Massa per unità di volume</p>
+                        <p><strong>Acqua:</strong> ρ = 1000 kg/m³</p>
+                        <p><strong>Unità:</strong> kg/m³</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Peso Specifico (γ)</h4>
+                        <p>Peso per unità di volume</p>
+                        <p>γ = ρ × g</p>
+                        <p><strong>Acqua:</strong> γ = 9810 N/m³</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Incomprimibilità</h4>
+                        <p>La densità rimane costante</p>
+                        <p>Valida per liquidi in condizioni normali</p>
+                        <p><strong>Semplifica molto i calcoli</strong></p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Viscosità</h4>
+                        <p>In idrostatica è trascurata</p>
+                        <p>Il fluido è in quiete</p>
+                        <p><strong>Solo forze di pressione</strong></p>
+                    </div>
+                </div>
+                
+                <h3>📏 Tipi di Pressione:</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Simbolo</th>
+                        <th>Definizione</th>
+                        <th>Riferimento</th>
+                    </tr>
+                    <tr>
+                        <td>Pressione Assoluta</td>
+                        <td>p_abs</td>
+                        <td>Pressione totale</td>
+                        <td>Vuoto assoluto (zero)</td>
+                    </tr>
+                    <tr>
+                        <td>Pressione Relativa</td>
+                        <td>p_rel</td>
+                        <td>p_abs - p_atmosferica</td>
+                        <td>Pressione atmosferica</td>
+                    </tr>
+                    <tr>
+                        <td>Pressione Piezometrica</td>
+                        <td>p/γ</td>
+                        <td>Altezza di colonna d'acqua</td>
+                        <td>Quota di riferimento</td>
+                    </tr>
+                </table>
+                
+                <div class="info">
+                    <strong>💡 Nota Importante:</strong> Negli esercizi di ingegneria civile si usa quasi sempre la pressione relativa (detta anche manometrica), dove la pressione atmosferica è il riferimento zero.
+                </div>
+                
+                <h3>🌍 Applicazioni dell'Idrostatica:</h3>
+                <ul>
+                    <li><strong>Dighe e muri di sostegno:</strong> Calcolo della spinta dell'acqua</li>
+                    <li><strong>Serbatoi e vasche:</strong> Pressioni sul fondo e sulle pareti</li>
+                    <li><strong>Fondazioni:</strong> Spinta dell'acqua di falda</li>
+                    <li><strong>Galleggiamento:</strong> Principio di Archimede per strutture</li>
+                    <li><strong>Strumenti di misura:</strong> Manometri, piezometri</li>
+                </ul>
+            </div>
+            
+            <!-- TAB LEGGI -->
+            <div id="leggi" class="tab-content">
+                <h2>⚖️ Leggi Fondamentali dell'Idrostatica</h2>
+                
+                <div class="law-box">
+                    <h3>🎯 Prima Legge dell'Idrostatica</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        p = γ × h
+                    </div>
+                    <p>La pressione in un punto è proporzionale alla profondità</p>
+                    <p>dove: p = pressione relativa [Pa], γ = peso specifico [N/m³], h = profondità [m]</p>
+                </div>
+                
+                <div class="law-box">
+                    <h3>🎯 Seconda Legge dell'Idrostatica</h3>
+                    <div style="font-size: 20px; margin: 15px 0;">
+                        In punti alla stessa quota: p₁ = p₂
+                    </div>
+                    <p>La pressione è costante su superfici orizzontali</p>
+                </div>
+                
+                <div class="diagram">
+                    <h4>Legge di Stevino - Distribuzione della Pressione</h4>
+                    <svg width="500" height="350" viewBox="0 0 500 350">
+                        <!-- Contenitore -->
+                        <rect x="50" y="50" width="300" height="250" fill="none" stroke="#2d3436" stroke-width="2"/>
+                        
+                        <!-- Fluido -->
+                        <rect x="50" y="100" width="300" height="200" fill="#74b9ff" opacity="0.4"/>
+                        
+                        <!-- Superficie libera -->
+                        <line x1="50" y1="100" x2="350" y2="100" stroke="#0984e3" stroke-width="3"/>
+                        
+                        <!-- Livelli di pressione -->
+                        <g stroke="#fd79a8" stroke-width="1" stroke-dasharray="5,5">
+                            <line x1="50" y1="150" x2="350" y2="150"/>
+                            <line x1="50" y1="200" x2="350" y2="200"/>
+                            <line x1="50" y1="250" x2="350" y2="250"/>
+                        </g>
+                        
+                        <!-- Diagramma delle pressioni -->
+                        <polygon points="370,100 370,300 420,300 370,100" fill="#e17055" opacity="0.6"/>
+                        
+                        <!-- Etichette profondità -->
+                        <text x="30" y="105" font-size="12" fill="#636e72">h=0</text>
+                        <text x="30" y="155" font-size="12" fill="#636e72">h₁</text>
+                        <text x="30" y="205" font-size="12" fill="#636e72">h₂</text>
+                        <text x="30" y="255" font-size="12" fill="#636e72">h₃</text>
+                        
+                        <!-- Etichette pressioni -->
+                        <text x="430" y="105" font-size="12" fill="#e17055">p=0</text>
+                        <text x="430" y="155" font-size="12" fill="#e17055">p₁=γh₁</text>
+                        <text x="430" y="205" font-size="12" fill="#e17055">p₂=γh₂</text>
+                        <text x="430" y="255" font-size="12" fill="#e17055">p₃=γh₃</text>
+                        
+                        <!-- Frecce pressione -->
+                        <g fill="#e17055">
+                            <polygon points="350,150 365,150 360,155"/>
+                            <polygon points="350,200 385,200 380,205"/>
+                            <polygon points="350,250 420,250 415,255"/>
+                        </g>
+                        
+                        <text x="200" y="330" text-anchor="middle" font-size="14" fill="#2d3436">
+                            Distribuzione lineare della pressione con la profondità
+                        </text>
+                    </svg>
+                </div>
+                
+                <div class="principle-box">
+                    <h3>🌊 Principio dei Vasi Comunicanti</h3>
+                    <p style="font-size: 18px; margin: 15px 0;">
+                        In vasi comunicanti contenenti lo stesso fluido, il livello si stabilizza alla stessa quota in tutti i rami.
+                    </p>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <strong>h₁ = h₂ = h₃ = ... = costante</strong>
+                    </div>
+                </div>
+                
+                <div class="diagram">
+                    <h4>Vasi Comunicanti</h4>
+                    <svg width="400" height="200" viewBox="0 0 400 200">
+                        <!-- Tre vasi di forme diverse -->
+                        <!-- Vaso 1 - cilindrico -->
+                        <rect x="50" y="80" width="60" height="100" fill="none" stroke="#2d3436" stroke-width="2"/>
+                        <rect x="50" y="120" width="60" height="60" fill="#74b9ff" opacity="0.6"/>
+                        
+                        <!-- Vaso 2 - conico -->
+                        <polygon points="150,80 200,80 180,180 170,180" fill="none" stroke="#2d3436" stroke-width="2"/>
+                        <polygon points="152,120 198,120 185,180 167,180" fill="#74b9ff" opacity="0.6"/>
+                        
+                        <!-- Vaso 3 - irregolare -->
+                        <path d="M 250,80 Q 280,90 290,110 L 290,180 L 260,180 Q 250,160 250,140 Z" 
+                              fill="none" stroke="#2d3436" stroke-width="2"/>
+                        <path d="M 252,120 Q 278,125 288,135 L 288,180 L 262,180 Q 252,165 252,145 Z" 
+                              fill="#74b9ff" opacity="0.6"/>
+                        
+                        <!-- Collegamento inferiore -->
+                        <rect x="45" y="175" width="250" height="10" fill="#74b9ff" opacity="0.6" stroke="#2d3436"/>
+                        
+                        <!-- Livelli uguali -->
+                        <line x1="45" y1="120" x2="295" y2="120" stroke="#e17055" stroke-width="2" stroke-dasharray="3,3"/>
+                        <text x="320" y="125" font-size="12" fill="#e17055">Stesso livello</text>
+                        
+                        <!-- Etichette -->
+                        <text x="80" y="75" text-anchor="middle" font-size="12" fill="#2d3436">Cilindrico</text>
+                        <text x="175" y="75" text-anchor="middle" font-size="12" fill="#2d3436">Conico</text>
+                        <text x="270" y="75" text-anchor="middle" font-size="12" fill="#2d3436">Irregolare</text>
+                    </svg>
+                </div>
+                
+                <div class="principle-box">
+                    <h3>⚡ Principio di Pascal</h3>
+                    <p style="font-size: 18px; margin: 15px 0;">
+                        Una pressione applicata a un fluido confinato si trasmette integralmente in tutte le direzioni.
+                    </p>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <strong>Δp = costante in tutto il fluido</strong>
+                    </div>
+                </div>
+                
+                <h3>🔧 Applicazioni del Principio di Pascal:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #00b894;">Martinetti Idraulici</h4>
+                        <p>F₁/A₁ = F₂/A₂</p>
+                        <p>Amplificazione della forza attraverso differenza di aree</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Freni Idraulici</h4>
+                        <p>Trasmissione istantanea della pressione</p>
+                        <p>Moltiplicazione della forza frenante</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Torchi Idraulici</h4>
+                        <p>Applicazione di grandi forze</p>
+                        <p>Usati nell'industria e nelle costruzioni</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Sistemi di Sollevamento</h4>
+                        <p>Piattaforme elevatrici</p>
+                        <p>Sistemi di movimentazione terra</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>📐 Equazione Fondamentale dell'Idrostatica</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        p₂ - p₁ = γ(h₂ - h₁)
+                    </div>
+                    <p>Differenza di pressione tra due punti a quote diverse</p>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ Attenzione ai Segni:</strong> La convenzione più comune in ingegneria civile considera positive le quote verso l'alto e la pressione aumenta verso il basso (con la profondità).
+                </div>
+            </div>
+            
+            <!-- TAB SPINTA -->
+            <div id="spinta" class="tab-content">
+                <h2>💪 Spinta Idrostatica</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    La <strong>spinta idrostatica</strong> è la forza risultante che un fluido esercita su una superficie immersa. È fondamentale per il progetto di dighe, muri di sostegno, e strutture idrauliche.
+                </p>
+                
+                <div class="formula-box">
+                    <h3>🎯 Spinta su Superficie Piana Verticale</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        S = γ × h_G × A
+                    </div>
+                    <p>dove: S = spinta totale [N], h_G = profondità del baricentro [m], A = area della superficie [m²]</p>
+                </div>
+                
+                <div class="diagram">
+                    <h4>Spinta su Parete

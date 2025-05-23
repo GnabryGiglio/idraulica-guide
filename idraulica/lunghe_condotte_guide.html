@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunghe Condotte - Guida Interattiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-tab:last-child {
+            border-right: none;
+        }
+        
+        .nav-tab.active {
+            background: #007bff;
+            color: white;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: #e9ecef;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .calculator {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(232, 67, 147, 0.3);
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            background: #00a085;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .result {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .step {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .step h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #6c5ce7;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight strong {
+            color: #d63031;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .exercise-container {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .exercise-title {
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Lunghe Condotte in Idraulica</h1>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('teoria')">📚 Teoria</button>
+            <button class="nav-tab" onclick="showTab('formule')">📐 Formule</button>
+            <button class="nav-tab" onclick="showTab('esempi')">💡 Esempi</button>
+            <button class="nav-tab" onclick="showTab('calcolatore')">🧮 Calcolatore</button>
+            <button class="nav-tab" onclick="showTab('esercizi')">📝 Esercizi</button>
+        </div>
+        
+        <div class="content">
+            <!-- TAB TEORIA -->
+            <div id="teoria" class="tab-content active">
+                <h2>🎯 Cosa sono le Lunghe Condotte?</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    Le <strong>lunghe condotte</strong> sono tubazioni in cui le perdite di carico distribuite lungo la condotta sono molto maggiori delle perdite di carico localizzate (in raccordi, valvole, ecc.).
+                </p>
+                
+                <div class="highlight">
+                    <strong>Criterio pratico:</strong> Si considera una condotta "lunga" quando L/D > 1000, dove L è la lunghezza e D il diametro.
+                </div>
+                
+                <h3>🔍 Caratteristiche principali:</h3>
+                <ul>
+                    <li><strong>Perdite distribuite dominanti:</strong> Le perdite lungo la tubazione sono molto maggiori di quelle localizzate</li>
+                    <li><strong>Regime di moto:</strong> Può essere laminare (Re < 2000) o turbolento (Re > 4000)</li>
+                    <li><strong>Scabrezza importante:</strong> Nel regime turbolento, la scabrezza della parete influenza significativamente le perdite</li>
+                </ul>
+                
+                <div class="diagram">
+                    <h4>Schema di una Lunga Condotta</h4>
+                    <svg width="600" height="200" viewBox="0 0 600 200">
+                        <!-- Condotta -->
+                        <rect x="50" y="80" width="500" height="40" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+                        
+                        <!-- Frecce flusso -->
+                        <polygon points="70,90 70,110 90,100" fill="#e74c3c"/>
+                        <polygon points="170,90 170,110 190,100" fill="#e74c3c"/>
+                        <polygon points="270,90 270,110 290,100" fill="#e74c3c"/>
+                        <polygon points="370,90 370,110 390,100" fill="#e74c3c"/>
+                        <polygon points="470,90 470,110 490,100" fill="#e74c3c"/>
+                        
+                        <!-- Etichette -->
+                        <text x="300" y="140" text-anchor="middle" font-size="14" fill="#2c3e50">Lunghezza L</text>
+                        <text x="25" y="105" text-anchor="middle" font-size="12" fill="#2c3e50">D</text>
+                        <text x="570" y="105" text-anchor="middle" font-size="12" fill="#2c3e50">Q</text>
+                        
+                        <!-- Linee dimensionali -->
+                        <line x1="50" y1="150" x2="550" y2="150" stroke="#34495e" stroke-width="1"/>
+                        <line x1="50" y1="145" x2="50" y2="155" stroke="#34495e" stroke-width="1"/>
+                        <line x1="550" y1="145" x2="550" y2="155" stroke="#34495e" stroke-width="1"/>
+                        
+                        <line x1="30" y1="80" x2="30" y2="120" stroke="#34495e" stroke-width="1"/>
+                        <line x1="25" y1="80" x2="35" y2="80" stroke="#34495e" stroke-width="1"/>
+                        <line x1="25" y1="120" x2="35" y2="120" stroke="#34495e" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <h3>🌊 Tipi di Regime di Moto:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #00b894;">Regime Laminare (Re < 2000)</h4>
+                        <p>Il fluido scorre in strati ordinati, senza mescolamento trasversale.</p>
+                        <p><strong>Caratteristiche:</strong></p>
+                        <ul>
+                            <li>Perdite proporzionali alla velocità</li>
+                            <li>Indipendenti dalla scabrezza</li>
+                            <li>Coefficiente f = 64/Re</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #e17055;">Regime Turbolento (Re > 4000)</h4>
+                        <p>Il fluido presenta movimenti caotici e mescolamento trasversale.</p>
+                        <p><strong>Caratteristiche:</strong></p>
+                        <ul>
+                            <li>Perdite proporzionali al quadrato della velocità</li>
+                            <li>Dipendenti dalla scabrezza</li>
+                            <li>Coefficiente f calcolato con formule empiriche</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB FORMULE -->
+            <div id="formule" class="tab-content">
+                <h2>📐 Formule Fondamentali</h2>
+                
+                <div class="formula-box">
+                    <h3>Equazione di Darcy-Weisbach (Formula Principale)</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        Δh = f × (L/D) × (v²/2g)
+                    </div>
+                    <p>dove: Δh = perdita di carico [m], f = coefficiente di attrito, L = lunghezza [m], D = diametro [m], v = velocità media [m/s], g = 9.81 m/s²</p>
+                </div>
+                
+                <h3>🔢 Numero di Reynolds</h3>
+                <div class="formula-box">
+                    <div style="font-size: 20px;">Re = (v × D) / ν</div>
+                    <p>dove: ν = viscosità cinematica [m²/s]</p>
+                </div>
+                
+                <h3>⚙️ Coefficiente di Attrito (f)</h3>
+                
+                <div class="step">
+                    <h4>Regime Laminare (Re < 2000)</h4>
+                    <div class="formula-box">
+                        <div style="font-size: 20px;">f = 64/Re</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h4>Regime Turbolento - Colebrook-White</h4>
+                    <div class="formula-box">
+                        <div style="font-size: 18px;">1/√f = -2 × log₁₀[(ε/3.7D) + (2.51/(Re×√f))]</div>
+                        <p>dove: ε = scabrezza assoluta [m]</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h4>Approssimazione di Swamee-Jain (più semplice)</h4>
+                    <div class="formula-box">
+                        <div style="font-size: 16px;">f = 0.25 / [log₁₀(ε/3.7D + 5.74/Re^0.9)]²</div>
+                    </div>
+                </div>
+                
+                <h3>💧 Relazioni Utili</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Velocità Media</h4>
+                        <div class="formula-box">v = Q / A = 4Q / (π × D²)</div>
+                    </div>
+                    <div class="card">
+                        <h4>Portata</h4>
+                        <div class="formula-box">Q = A × v = (π × D²/4) × v</div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>💡 Suggerimento:</strong> Per il regime turbolento, spesso si usano diagrammi di Moody o formule approssimate per evitare il calcolo iterativo di Colebrook-White.
+                </div>
+            </div>
+            
+            <!-- TAB ESEMPI -->
+            <div id="esempi" class="tab-content">
+                <h2>💡 Esempi Risolti Passo-Passo</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 1: Regime Laminare</div>
+                    
+                    <p><strong>Problema:</strong> Una condotta di ghisa (D = 200 mm, L = 500 m) trasporta acqua (ν = 1×10⁻⁶ m²/s) con velocità v = 0.5 m/s. Calcolare la perdita di carico.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Calcolare il numero di Reynolds</h4>
+                        <p>Re = (v × D) / ν = (0.5 × 0.2) / (1×10⁻⁶) = 100,000</p>
+                        <p><strong>Poiché Re > 4000 → Regime Turbolento!</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Calcolare il coefficiente di attrito</h4>
+                        <p>Per ghisa: ε ≈ 0.25 mm = 0.00025 m</p>
+                        <p>ε/D = 0.00025/0.2 = 0.00125</p>
+                        <p>Usando Swamee-Jain: f ≈ 0.0205</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Applicare Darcy-Weisbach</h4>
+                        <p>Δh = f × (L/D) × (v²/2g)</p>
+                        <p>Δh = 0.0205 × (500/0.2) × (0.5²/19.62)</p>
+                        <p>Δh = 0.0205 × 2500 × 0.0127 = <strong>0.65 m</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 2: Calcolo della Portata</div>
+                    
+                    <p><strong>Problema:</strong> Una condotta di acciaio (D = 300 mm, L = 1000 m, ε = 0.045 mm) collega due serbatoi con dislivello di 10 m. Calcolare la portata.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Impostare l'equazione</h4>
+                        <p>La perdita di carico deve uguagliare il dislivello:</p>
+                        <p>Δh = 10 m = f × (L/D) × (v²/2g)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Processo iterativo</h4>
+                        <p>Bisogna assumere un valore di f, calcolare v, poi Re, poi f reale, e iterare.</p>
+                        <p><strong>Risultato finale:</strong> Q ≈ 0.045 m³/s</p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>🎯 Strategia di Risoluzione:</strong>
+                    <ol>
+                        <li>Identificare i dati e l'incognita</li>
+                        <li>Calcolare Re per determinare il regime</li>
+                        <li>Scegliere la formula appropriata per f</li>
+                        <li>Applicare Darcy-Weisbach</li>
+                        <li>Se necessario, iterare per convergenza</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- TAB CALCOLATORE -->
+            <div id="calcolatore" class="tab-content">
+                <h2>🧮 Calcolatore Interattivo</h2>
+                
+                <div class="calculator">
+                    <h3>Calcolo Perdite di Carico - Lunghe Condotte</h3>
+                    
+                    <div class="grid">
+                        <div>
+                            <div class="input-group">
+                                <label>Diametro (mm):</label>
+                                <input type="number" id="diametro" value="200" step="1">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Lunghezza (m):</label>
+                                <input type="number" id="lunghezza" value="500" step="1">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Velocità (m/s):</label>
+                                <input type="number" id="velocita" value="1.0" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="input-group">
+                                <label>Materiale:</label>
+                                <select id="materiale">
+                                    <option value="0.00025">Ghisa (ε = 0.25 mm)</option>
+                                    <option value="0.000045">Acciaio commerciale (ε = 0.045 mm)</option>
+                                    <option value="0.00015">Acciaio zincato (ε = 0.15 mm)</option>
+                                    <option value="0.002">Cemento (ε = 2 mm)</option>
+                                    <option value="0.000001">Tubo liscio (ε = 0.001 mm)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Viscosità cinematica (m²/s):</label>
+                                <input type="number" id="viscosita" value="0.000001" step="0.0000001">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Tipo di calcolo:</label>
+                                <select id="tipoCalcolo">
+                                    <option value="perdite">Calcola perdite di carico</option>
+                                    <option value="portata">Calcola portata (da dislivello)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="inputDislivello" style="display: none;">
+                        <div class="input-group">
+                            <label>Dislivello disponibile (m):</label>
+                            <input type="number" id="dislivello" value="10" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="calcolaRisultato()">🚀 Calcola</button>
+                    <button class="btn" onclick="azzeraCalcoli()">🔄 Reset</button>
+                    
+                    <div class="result" id="risultato">
+                        Inserisci i dati e clicca "Calcola" per vedere il risultato
+                    </div>
+                    
+                    <div id="dettagliCalcolo" style="display: none; margin-top: 20px;">
+                        <h4 style="color: white;">📊 Dettagli del Calcolo:</h4>
+                        <div id="passiCalcolo" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB ESERCIZI -->
+            <div id="esercizi" class="tab-content">
+                <h2>📝 Esercizi per Praticare</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 1: Calcolo Base</div>
+                    <p><strong>Testo:</strong> Una condotta in acciaio zincato (D = 150 mm, L = 800 m) trasporta acqua a 20°C (ν = 1×10⁻⁶ m²/s) con velocità di 1.2 m/s. Calcolare la perdita di carico.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzione(1)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione1" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Re = (1.2 × 0.15) / (1×10⁻⁶) = 180,000 → Turbolento</p>
+                            <p>2. ε/D = 0.00015/0.15 = 0.001</p>
+                            <p>3. f ≈ 0.0195 (da Swamee-Jain)</p>
+                            <p>4. Δh = 0.0195 × (800/0.15) × (1.2²/19.62) = <strong>7.6 m</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 2: Confronto Materiali</div>
+                    <p><strong>Testo:</strong> Confrontare le perdite di carico per la stessa condotta (D = 200 mm, L = 1000 m, v = 2 m/s) realizzata in:</p>
+                    <ul>
+                        <li>a) Acciaio commerciale (ε = 0.045 mm)</li>
+                        <li>b) Ghisa (ε = 0.25 mm)</li>
+                        <li>c) Cemento (ε = 2 mm)</li>
+                    </ul>
+                    
+                    <button class="btn" onclick="mostraSoluzione(2)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione2" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>Re = (2 × 0.2) / (1×10⁻⁶) = 400,000 → Turbolento</p>
+                            <p>a) Acciaio: f ≈ 0.0165 → Δh ≈ 33.7 m</p>
+                            <p>b) Ghisa: f ≈ 0.0195 → Δh ≈ 39.8 m</p>
+                            <p>c) Cemento: f ≈ 0.0350 → Δh ≈ 71.4 m</p>
+                            <p><strong>Conclusione:</strong> La scabrezza influisce significativamente!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 3: Calcolo Portata</div>
+                    <p><strong>Testo:</strong> Un acquedotto (D = 400 mm, L = 2000 m, acciaio commerciale) deve trasportare acqua tra due serbatoi con dislivello di 25 m. Calcolare la portata massima.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzione(3)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione3" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione (iterativa):</h4>
+                            <p>1. Impostare: 25 = f × (2000/0.4) × (v²/19.62)</p>
+                            <p>2. Processo iterativo per trovare v</p>
+                            <p>3. Risultato: v ≈ 3.2 m/s</p>
+                            <p>4. Q = (π × 0.4²/4) × 3.2 = <strong>0.40 m³/s</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>💪 Suggerimenti per gli Esercizi:</strong>
+                    <ul>
+                        <li>Sempre controllare il regime di moto (Re)</li>
+                        <li>Attenzione alle unità di misura!</li>
+                        <li>Per problemi di portata, spesso serve iterazione</li>
+                        <li>Usare il calcolatore per verificare i tuoi risultati</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Nascondere tutti i contenuti
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Rimuovere classe active da tutti i tab
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrare il contenuto selezionato
+            document.getElementById(tabName).classList.add('active');
+            
+            // Attivare il tab selezionato
+            event.target.classList.add('active');
+            
+            // Gestire visibilità input dislivello
+            if (tabName === 'calcolatore') {
+                toggleInputDislivello();
+            }
+        }
+        
+        function toggleInputDislivello() {
+            const tipoCalcolo = document.getElementById('tipoCalcolo').value;
+            const inputDislivello = document.getElementById('inputDislivello');
+            
+            if (tipoCalcolo === 'portata') {
+                inputDislivello.style.display = 'block';
+            } else {
+                inputDislivello.style.display = 'none';
+            }
+        }
+        
+        function calcolaRisultato() {
+            const D = parseFloat(document.getElementById('diametro').value) / 1000; // Conversione mm -> m
+            const L = parseFloat(document.getElementById('lunghezza').value);
+            const v = parseFloat(document.getElementById('velocita').value);
+            const epsilon = parseFloat(document.getElementById('materiale').value);
+            const nu = parseFloat(document.getElementById('viscosita').value);
+            const tipoCalcolo = document.getElementById('tipoCalcolo').value;
+            
+            let risultato = '';
+            let dettagli = '';
+            
+            if (tipoCalcolo === 'perdite') {
+                // Calcolo perdite di carico
+                const Re = (v * D) / nu;
+                let f;
+                let regime;
+                
+                if (Re < 2000) {
+                    // Regime laminare
+                    f = 64 / Re;
+                    regime = 'Laminare';
+                } else {
+                    // Regime turbolento - Swamee-Jain
+                    const term1 = epsilon / (3.7 * D);
+                    const term2 = 5.74 / Math.pow(Re, 0.9);
+                    f = 0.25 / Math.pow(Math.log10(term1 + term2), 2);
+                    regime = 'Turbolento';
+                }
+                
+                const deltaH = f * (L / D) * (v * v) / (2 * 9.81);
+                
+                risultato = `Perdita di carico: ${deltaH.toFixed(2)} m`;
+                
+                dettagli = `
+                    <strong>Parametri di calcolo:</strong><br>
+                    • Diametro: ${(D*1000).toFixed(0)} mm<br>
+                    • Lunghezza: ${L} m<br>
+                    • Velocità: ${v} m/s<br>
+                    • Numero di Reynolds: ${Re.toFixed(0)}<br>
+                    • Regime di moto: ${regime}<br>
+                    • Coefficiente di attrito f: ${f.toFixed(4)}<br>
+                    • Scabrezza relativa ε/D: ${(epsilon/D).toFixed(6)}<br>
+                    <strong>Risultato: Δh = ${deltaH.toFixed(2)} m</strong>
+                `;
+                
+            } else {
+                // Calcolo portata da dislivello
+                const dislivello = parseFloat(document.getElementById('dislivello').value);
+                
+                // Processo iterativo semplificato
+                let vCalc = Math.sqrt(2 * 9.81 * dislivello * D / (0.02 * L)); // Stima iniziale
+                let convergenza = false;
+                let iterazioni = 0;
+                
+                while (!convergenza && iterazioni < 20) {
+                    const Re = (vCalc * D) / nu;
+                    let f;
+                    
+                    if (Re < 2000) {
+                        f = 64 / Re;
+                    } else {
+                        const term1 = epsilon / (3.7 * D);
+                        const term2 = 5.74 / Math.pow(Re, 0.9);
+                        f = 0.25 / Math.pow(Math.log10(term1 + term2), 2);
+                    }
+                    
+                    const vNuova = Math.sqrt(2 * 9.81 * dislivello / (f * L / D));
+                    
+                    if (Math.abs(vNuova - vCalc) < 0.001) {
+                        convergenza = true;
+                    }
+                    
+                    vCalc = vNuova;
+                    iterazioni++;
+                }
+                
+                const Q = Math.PI * D * D / 4 * vCalc;
+                const Re = (vCalc * D) / nu;
+                const regime = Re < 2000 ? 'Laminare' : 'Turbolento';
+                
+                risultato = `Portata: ${Q.toFixed(3)} m³/s (${(Q*1000).toFixed(1)} L/s)`;
+                
+                dettagli = `
+                    <strong>Parametri di calcolo:</strong><br>
+                    • Dislivello disponibile: ${dislivello} m<br>
+                    • Diametro: ${(D*1000).toFixed(0)} mm<br>
+                    • Lunghezza: ${L} m<br>
+                    • Velocità risultante: ${vCalc.toFixed(2)} m/s<br>
+                    • Numero di Reynolds: ${Re.toFixed(0)}<br>
+                    • Regime di moto: ${regime}<br>
+                    • Iterazioni per convergenza: ${iterazioni}<br>
+                    <strong>Risultato: Q = ${Q.toFixed(3)} m³/s</strong>
+                `;
+            }
+            
+            document.getElementById('risultato').innerHTML = risultato;
+            document.getElementById('passiCalcolo').innerHTML = dettagli;
+            document.getElementById('dettagliCalcolo').style.display = 'block';
+        }
+        
+        function azzeraCalcoli() {
+            document.getElementById('diametro').value = '200';
+            document.getElementById('lunghezza').value = '500';
+            document.getElementById('velocita').value = '1.0';
+            document.getElementById('viscosita').value = '0.000001';
+            document.getElementById('dislivello').value = '10';
+            document.getElementById('materiale').selectedIndex = 0;
+            document.getElementById('tipoCalcolo').selectedIndex = 0;
+            document.getElementById('risultato').innerHTML = 'Inserisci i dati e clicca "Calcola" per vedere il risultato';
+            document.getElementById('dettagliCalcolo').style.display = 'none';
+            toggleInputDislivello();
+        }
+        
+        function mostraSoluzione(numeroEsercizio) {
+            const soluzione = document.getElementById(`soluzione${numeroEsercizio}`);
+            if (soluzione.style.display === 'none' || soluzione.style.display === '') {
+                soluzione.style.display = 'block';
+            } else {
+                soluzione.style.display = 'none';
+            }
+        }
+        
+        // Event listeners
+        document.getElementById('tipoCalcolo').addEventListener('change', toggleInputDislivello);
+        
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleInputDislivello();
+        });
+    </script>
+</body>
+</html>
+            

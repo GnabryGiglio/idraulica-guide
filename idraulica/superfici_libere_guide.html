@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correnti a Superficie Libera - Guida Interattiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-tab:last-child {
+            border-right: none;
+        }
+        
+        .nav-tab.active {
+            background: #00b894;
+            color: white;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: #e9ecef;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-left: 5px solid #e17055;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .calculator {
+            background: linear-gradient(135deg, #6c5ce7, #5f3dc4);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            background: #fd79a8;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            background: #e84393;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+        }
+        
+        .result {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .step {
+            background: #e8f5e8;
+            border-left: 4px solid #00b894;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .step h4 {
+            color: #00a085;
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #74b9ff;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight strong {
+            color: #d63031;
+        }
+        
+        .warning {
+            background: #ffe0e6;
+            border: 1px solid #ff7675;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .warning strong {
+            color: #d63031;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .exercise-container {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .exercise-title {
+            background: #74b9ff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .regime-box {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .lento {
+            background: #74b9ff;
+            color: white;
+        }
+        
+        .veloce {
+            background: #fd79a8;
+            color: white;
+        }
+        
+        .critico {
+            background: #fdcb6e;
+            color: #2d3436;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #74b9ff;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Correnti a Superficie Libera</h1>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('teoria')">📚 Teoria</button>
+            <button class="nav-tab" onclick="showTab('formule')">📐 Formule</button>
+            <button class="nav-tab" onclick="showTab('regimi')">⚡ Regimi di Moto</button>
+            <button class="nav-tab" onclick="showTab('esempi')">💡 Esempi</button>
+            <button class="nav-tab" onclick="showTab('calcolatore')">🧮 Calcolatore</button>
+            <button class="nav-tab" onclick="showTab('esercizi')">📝 Esercizi</button>
+        </div>
+        
+        <div class="content">
+            <!-- TAB TEORIA -->
+            <div id="teoria" class="tab-content active">
+                <h2>🎯 Che cos'è una Corrente a Superficie Libera?</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    Una <strong>corrente a superficie libera</strong> è un flusso d'acqua dove la superficie superiore è esposta all'atmosfera (pressione atmosferica). Esempi tipici sono fiumi, canali, acquedotti a pelo libero.
+                </p>
+                
+                <div class="highlight">
+                    <strong>Differenza fondamentale:</strong> A differenza delle condotte in pressione, qui la superficie libera può variare di forma e altezza, e la pressione sulla superficie è sempre quella atmosferica.
+                </div>
+                
+                <div class="diagram">
+                    <h4>Sezione Tipica di un Canale</h4>
+                    <svg width="500" height="250" viewBox="0 0 500 250">
+                        <!-- Sezione trapezoidale del canale -->
+                        <polygon points="50,200 150,100 350,100 450,200 450,220 50,220" 
+                                 fill="#74b9ff" stroke="#0984e3" stroke-width="2" opacity="0.7"/>
+                        
+                        <!-- Superficie libera -->
+                        <line x1="150" y1="100" x2="350" y2="100" stroke="#00b894" stroke-width="3"/>
+                        <text x="250" y="90" text-anchor="middle" font-size="12" fill="#00b894" font-weight="bold">Superficie Libera</text>
+                        
+                        <!-- Dimensioni -->
+                        <line x1="150" y1="120" x2="150" y2="200" stroke="#2d3436" stroke-width="1" stroke-dasharray="5,5"/>
+                        <line x1="350" y1="120" x2="350" y2="200" stroke="#2d3436" stroke-width="1" stroke-dasharray="5,5"/>
+                        <text x="120" y="160" font-size="12" fill="#2d3436">h</text>
+                        
+                        <!-- Larghezza superficiale -->
+                        <line x1="150" y1="80" x2="350" y2="80" stroke="#2d3436" stroke-width="1"/>
+                        <line x1="150" y1="75" x2="150" y2="85" stroke="#2d3436" stroke-width="1"/>
+                        <line x1="350" y1="75" x2="350" y2="85" stroke="#2d3436" stroke-width="1"/>
+                        <text x="250" y="70" text-anchor="middle" font-size="12" fill="#2d3436">B (larghezza)</text>
+                        
+                        <!-- Velocità -->
+                        <polygon points="200,130 200,140 230,135" fill="#e17055"/>
+                        <polygon points="270,130 270,140 300,135" fill="#e17055"/>
+                        <text x="320" y="140" font-size="12" fill="#e17055">v</text>
+                        
+                        <!-- Pendenza -->
+                        <line x1="50" y1="230" x2="450" y2="230" stroke="#636e72" stroke-width="1"/>
+                        <text x="250" y="245" text-anchor="middle" font-size="12" fill="#636e72">Pendenza i</text>
+                    </svg>
+                </div>
+                
+                <h3>🔍 Caratteristiche Principali:</h3>
+                <ul>
+                    <li><strong>Superficie libera:</strong> Esposta alla pressione atmosferica</li>
+                    <li><strong>Forma variabile:</strong> La sezione bagnata cambia con il livello d'acqua</li>
+                    <li><strong>Gravità dominante:</strong> Il moto è principalmente dovuto alla forza di gravità</li>
+                    <li><strong>Pendenza importante:</strong> La pendenza del fondo determina l'energia disponibile</li>
+                </ul>
+                
+                <h3>📏 Parametri Geometrici Fondamentali:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #00b894;">Area Bagnata (A)</h4>
+                        <p>Superficie della sezione trasversale occupata dall'acqua</p>
+                        <p><strong>Unità:</strong> m²</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Perimetro Bagnato (P)</h4>
+                        <p>Lunghezza del contorno della sezione in contatto con l'acqua (esclusa la superficie libera)</p>
+                        <p><strong>Unità:</strong> m</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Raggio Idraulico (R)</h4>
+                        <p>R = A/P - Rapporto tra area e perimetro bagnato</p>
+                        <p><strong>Unità:</strong> m</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #00b894;">Tirante Idraulico (h)</h4>
+                        <p>Altezza verticale dell'acqua nel canale</p>
+                        <p><strong>Unità:</strong> m</p>
+                    </div>
+                </div>
+                
+                <h3>🏗️ Tipi di Sezioni Più Comuni:</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Tipo Sezione</th>
+                        <th>Area (A)</th>
+                        <th>Perimetro Bagnato (P)</th>
+                        <th>Raggio Idraulico (R)</th>
+                    </tr>
+                    <tr>
+                        <td>Rettangolare</td>
+                        <td>B × h</td>
+                        <td>B + 2h</td>
+                        <td>Bh/(B + 2h)</td>
+                    </tr>
+                    <tr>
+                        <td>Trapezoidale</td>
+                        <td>h(B + mh)</td>
+                        <td>B + 2h√(1 + m²)</td>
+                        <td>h(B + mh)/[B + 2h√(1 + m²)]</td>
+                    </tr>
+                    <tr>
+                        <td>Triangolare</td>
+                        <td>mh²</td>
+                        <td>2h√(1 + m²)</td>
+                        <td>mh/[2√(1 + m²)]</td>
+                    </tr>
+                    <tr>
+                        <td>Circolare</td>
+                        <td>Complessa*</td>
+                        <td>Complessa*</td>
+                        <td>Complessa*</td>
+                    </tr>
+                </table>
+                <p style="font-size: 14px; color: #636e72;"><em>*Per sezioni circolari le formule dipendono dall'angolo di riempimento</em></p>
+                <p style="font-size: 14px; color: #636e72;"><em>m = pendenza delle sponde (rapporto orizzontale/verticale)</em></p>
+            </div>
+            
+            <!-- TAB FORMULE -->
+            <div id="formule" class="tab-content">
+                <h2>📐 Formule Fondamentali</h2>
+                
+                <h3>🌊 Equazione di Continuità</h3>
+                <div class="formula-box">
+                    <h4>Portata</h4>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        Q = A × v
+                    </div>
+                    <p>dove: Q = portata [m³/s], A = area bagnata [m²], v = velocità media [m/s]</p>
+                </div>
+                
+                <h3>⚡ Numero di Froude</h3>
+                <div class="formula-box">
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        Fr = v / √(g × D)
+                    </div>
+                    <p>dove: D = tirante idraulico = A/B (per sezioni rettangolari D = h)</p>
+                    <div style="margin-top: 15px; font-size: 16px;">
+                        <strong>Classificazione:</strong><br>
+                        Fr < 1 → Regime Lento (subcritico)<br>
+                        Fr = 1 → Regime Critico<br>
+                        Fr > 1 → Regime Veloce (supercritico)
+                    </div>
+                </div>
+                
+                <h3>🏃‍♂️ Formula di Chézy</h3>
+                <div class="formula-box">
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        v = C × √(R × i)
+                    </div>
+                    <p>dove: C = coefficiente di Chézy, R = raggio idraulico [m], i = pendenza [-]</p>
+                </div>
+                
+                <h3>📏 Formula di Manning (più usata)</h3>
+                <div class="formula-box">
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        v = (1/n) × R^(2/3) × i^(1/2)
+                    </div>
+                    <p>dove: n = coefficiente di scabrezza di Manning</p>
+                </div>
+                
+                <div class="formula-box">
+                    <h4>Portata con Manning</h4>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        Q = (A/n) × R^(2/3) × i^(1/2)
+                    </div>
+                </div>
+                
+                <h3>🎯 Condizioni Critiche</h3>
+                <div class="formula-box">
+                    <h4>Tirante Critico (sezione rettangolare)</h4>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        h_c = ∛(q²/g)
+                    </div>
+                    <p>dove: q = Q/B = portata per unità di larghezza [m²/s]</p>
+                </div>
+                
+                <h3>📊 Coefficienti di Manning Tipici</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Tipo di Superficie</th>
+                        <th>Coefficiente n</th>
+                        <th>Descrizione</th>
+                    </tr>
+                    <tr>
+                        <td>Cemento liscio</td>
+                        <td>0.012 - 0.014</td>
+                        <td>Canali artificiali ben rifiniti</td>
+                    </tr>
+                    <tr>
+                        <td>Calcestruzzo</td>
+                        <td>0.013 - 0.017</td>
+                        <td>Canali in calcestruzzo normale</td>
+                    </tr>
+                    <tr>
+                        <td>Mattoni</td>
+                        <td>0.014 - 0.017</td>
+                        <td>Canali rivestiti in mattoni</td>
+                    </tr>
+                    <tr>
+                        <td>Terra compatta</td>
+                        <td>0.025 - 0.035</td>
+                        <td>Canali in terra ben mantenuti</td>
+                    </tr>
+                    <tr>
+                        <td>Alveo naturale</td>
+                        <td>0.030 - 0.050</td>
+                        <td>Fiumi e torrenti naturali</td>
+                    </tr>
+                    <tr>
+                        <td>Vegetazione densa</td>
+                        <td>0.050 - 0.150</td>
+                        <td>Canali con molta vegetazione</td>
+                    </tr>
+                </table>
+                
+                <div class="highlight">
+                    <strong>💡 Nota Importante:</strong> Il coefficiente di Manning dipende molto dalle condizioni reali del canale. I valori della tabella sono indicativi e vanno sempre verificati con osservazioni sul campo quando possibile.
+                </div>
+            </div>
+            
+            <!-- TAB REGIMI -->
+            <div id="regimi" class="tab-content">
+                <h2>⚡ Regimi di Moto nelle Correnti a Superficie Libera</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    Il <strong>numero di Froude</strong> è il parametro chiave che determina il regime di moto in una corrente a superficie libera.
+                </p>
+                
+                <div class="formula-box">
+                    <h3>Numero di Froude</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        Fr = v / √(g × D)
+                    </div>
+                    <p>D = tirante idraulico = A/B (larghezza superficie libera)</p>
+                </div>
+                
+                <h3>🎭 I Tre Regimi di Moto:</h3>
+                
+                <div class="grid">
+                    <div class="card">
+                        <div class="regime-box lento">REGIME LENTO</div>
+                        <h4 style="color: #74b9ff;">Fr < 1 (Subcritico)</h4>
+                        <p><strong>Caratteristiche:</strong></p>
+                        <ul>
+                            <li>Tirante elevato, velocità bassa</li>
+                            <li>Le perturbazioni si propagano a monte</li>
+                            <li>Controllo da valle (downstream control)</li>
+                            <li>Superficie tranquilla</li>
+                            <li>Maggiore stabilità</li>
+                        </ul>
+                        <p><strong>Esempi:</strong> Canali di irrigazione, fiumi di pianura</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="regime-box critico">REGIME CRITICO</div>
+                        <h4 style="color: #fdcb6e;">Fr = 1</h4>
+                        <p><strong>Caratteristiche:</strong></p>
+                        <ul>
+                            <li>Condizione di equilibrio instabile</li>
+                            <li>Energia specifica minima</li>
+                            <li>Transizione tra i due regimi</li>
+                            <li>Le perturbazioni restano ferme</li>
+                            <li>Difficile da mantenere in pratica</li>
+                        </ul>
+                        <p><strong>Esempi:</strong> Soglie, stramazzi, passaggi critici</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="regime-box veloce">REGIME VELOCE</div>
+                        <h4 style="color: #fd79a8;">Fr > 1 (Supercritico)</h4>
+                        <p><strong>Caratteristiche:</strong></p>
+                        <ul>
+                            <li>Tirante basso, velocità elevata</li>
+                            <li>Le perturbazioni si propagano solo a valle</li>
+                            <li>Controllo da monte (upstream control)</li>
+                            <li>Superficie ondulata/turbolenta</li>
+                            <li>Maggiore erosione</li>
+                        </ul>
+                        <p><strong>Esempi:</strong> Canali di scarico, torrenti montani</p>
+                    </div>
+                </div>
+                
+                <div class="diagram">
+                    <h4>Confronto Visivo dei Regimi</h4>
+                    <svg width="600" height="300" viewBox="0 0 600 300">
+                        <!-- Regime Lento -->
+                        <g>
+                            <text x="100" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#74b9ff">REGIME LENTO</text>
+                            <text x="100" y="45" text-anchor="middle" font-size="12" fill="#74b9ff">Fr < 1</text>
+                            
+                            <polygon points="20,80 180,80 170,140 30,140" fill="#74b9ff" opacity="0.6"/>
+                            <line x1="20" y1="80" x2="180" y2="80" stroke="#0984e3" stroke-width="2"/>
+                            
+                            <text x="100" y="110" text-anchor="middle" font-size="12" fill="white">h alto</text>
+                            <text x="100" y="125" text-anchor="middle" font-size="12" fill="white">v bassa</text>
+                            
+                            <!-- Frecce perturbazioni -->
+                            <polygon points="60,60 60,70 40,65" fill="#e17055"/>
+                            <text x="50" y="55" text-anchor="middle" font-size="10" fill="#e17055">perturbazioni</text>
+                        </g>
+                        
+                        <!-- Regime Critico -->
+                        <g>
+                            <text x="300" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#fdcb6e">REGIME CRITICO</text>
+                            <text x="300" y="45" text-anchor="middle" font-size="12" fill="#fdcb6e">Fr = 1</text>
+                            
+                            <polygon points="220,90 380,90 370,130 230,130" fill="#fdcb6e" opacity="0.6"/>
+                            <line x1="220" y1="90" x2="380" y2="90" stroke="#e17055" stroke-width="2"/>
+                            
+                            <text x="300" y="110" text-anchor="middle" font-size="12" fill="#2d3436">h critico</text>
+                            <text x="300" y="125" text-anchor="middle" font-size="12" fill="#2d3436">v critica</text>
+                        </g>
+                        
+                        <!-- Regime Veloce -->
+                        <g>
+                            <text x="500" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#fd79a8">REGIME VELOCE</text>
+                            <text x="500" y="45" text-anchor="middle" font-size="12" fill="#fd79a8">Fr > 1</text>
+                            
+                            <polygon points="420,100 580,100 570,120 430,120" fill="#fd79a8" opacity="0.6"/>
+                            <line x1="420" y1="100" x2="580" y2="100" stroke="#e84393" stroke-width="2"/>
+                            
+                            <!-- Superficie ondulata -->
+                            <path d="M 420,100 Q 440,95 460,100 T 500,100 T 540,100 T 580,100" 
+                                  stroke="#e84393" stroke-width="2" fill="none"/>
+                            
+                            <text x="500" y="112" text-anchor="middle" font-size="12" fill="white">h basso</text>
+                            <text x="500" y="125" text-anchor="middle" font-size="12" fill="white">v alta</text>
+                            
+                            <!-- Frecce perturbazioni -->
+                            <polygon points="540,80 540,90 560,85" fill="#e17055"/>
+                            <text x="550" y="75" text-anchor="middle" font-size="10" fill="#e17055">perturbazioni</text>
+                        </g>
+                        
+                        <!-- Base comune -->
+                        <line x1="20" y1="160" x2="580" y2="160" stroke="#636e72" stroke-width="2"/>
+                        <text x="300" y="180" text-anchor="middle" font-size="12" fill="#636e72">Fondo del canale</text>
+                    </svg>
+                </div>
+                
+                <h3>🔄 Transizioni tra Regimi</h3>
+                
+                <div class="warning">
+                    <strong>⚠️ Risalto Idraulico:</strong> Quando una corrente veloce (Fr > 1) incontra un ostacolo o una contropendenza, può verificarsi un brusco passaggio al regime lento, con formazione di un risalto idraulico (salto d'acqua molto turbolento).
+                </div>
+                
+                <div class="step">
+                    <h4>Come Determinare il Regime</h4>
+                    <ol>
+                        <li>Calcolare la velocità media: v = Q/A</li>
+                        <li>Calcolare il tirante idraulico: D = A/B</li>
+                        <li>Calcolare Fr = v/√(g×D)</li>
+                        <li>Confrontare Fr con 1 per determinare il regime</li>
+                    </ol>
+                </div>
+                
+                <h3>🎯 Applicazioni Pratiche</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">Progetti in Regime Lento</h4>
+                        <ul>
+                            <li>Canali di irrigazione</li>
+                            <li>Canali navigabili</li>
+                            <li>Acquedotti a pelo libero</li>
+                            <li>Collettori fognari</li>
+                        </ul>
+                        <p><strong>Vantaggi:</strong> Maggiore stabilità, minore erosione</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Progetti in Regime Veloce</h4>
+                        <ul>
+                            <li>Canali di scarico</li>
+                            <li>Sfioratori di dighe</li>
+                            <li>Canali di drenaggio</li>
+                            <li>Opere di scarico</li>
+                        </ul>
+                        <p><strong>Vantaggi:</strong> Maggiore capacità di trasporto, sezioni più piccole</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB ESEMPI -->
+            <div id="esempi" class="tab-content">
+                <h2>💡 Esempi Risolti Passo-Passo</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 1: Canale Rettangolare - Calcolo Base</div>
+                    
+                    <p><strong>Problema:</strong> Un canale rettangolare in cemento (n = 0.013) ha larghezza B = 3 m, tirante h = 1.2 m, e pendenza i = 0.001. Calcolare la portata e determinare il regime di moto.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Parametri geometrici</h4>
+                        <p>Area bagnata: A = B × h = 3 × 1.2 = <strong>3.6 m²</strong></p>
+                        <p>Perimetro bagnato: P = B + 2h = 3 + 2×1.2 = <strong>5.4 m</strong></p>
+                        <p>Raggio idraulico: R = A/P = 3.6/5.4 = <strong>0.667 m</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Calcolare la velocità con Manning</h4>
+                        <p>v = (1/n) × R^(2/3) × i^(1/2)</p>
+                        <p>v = (1/0.013) × (0.667)^(2/3) × (0.001)^(1/2)</p>
+                        <p>v = 76.92 × 0.742 × 0.0316 = <strong>1.81 m/s</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Calcolare la portata</h4>
+                        <p>Q = A × v = 3.6 × 1.81 = <strong>6.52 m³/s</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Determinare il regime</h4>
+                        <p>Tirante idraulico: D = A/B = 3.6/3 = 1.2 m</p>
+                        <p>Numero di Froude: Fr = v/√(g×D) = 1.81/√(9.81×1.2) = 1.81/3.43 = <strong>0.53</strong></p>
+                        <p><strong>Poiché Fr < 1 → REGIME LENTO</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 2: Calcolo del Tirante Critico</div>
+                    
+                    <p><strong>Problema:</strong> Nel canale dell'esempio precedente (B = 3 m), calcolare il tirante critico per la stessa portata Q = 6.52 m³/s.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Calcolare la portata per unità di larghezza</h4>
+                        <p>q = Q/B = 6.52/3 = <strong>2.17 m²/s</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Applicare la formula del tirante critico</h4>
+                        <p>h_c = ∛(q²/g) = ∛((2.17)²/9.81) = ∛(0.48) = <strong>0.78 m</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Confronto con il tirante effettivo</h4>
+                        <p>Tirante effettivo: h = 1.2 m</p>
+                        <p>Tirante critico: h_c = 0.78 m</p>
+                        <p><strong>Poiché h > h_c → Conferma REGIME LENTO</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 3: Progetto di un Canale</div>
+                    
+                    <p><strong>Problema:</strong> Progettare un canale trapezoidale in terra (n = 0.030) per trasportare Q = 10 m³/s con pendenza i = 0.0005. Assumere pendenza delle sponde m = 1.5 e larghezza di fondo b = 4 m.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Parametri geometrici (in funzione di h)</h4>
+                        <p>Area: A = h(b + mh) = h(4 + 1.5h) = 4h + 1.5h²</p>
+                        <p>Perimetro: P = b + 2h√(1 + m²) = 4 + 2h√(1 + 1.5²) = 4 + 3.61h</p>
+                        <p>Raggio idraulico: R = A/P = (4h + 1.5h²)/(4 + 3.61h)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Equazione di Manning</h4>
+                        <p>Q = (A/n) × R^(2/3) × i^(1/2)</p>
+                        <p>10 = (A/0.030) × R^(2/3) × (0.0005)^(1/2)</p>
+                        <p>10 = A × R^(2/3) × 0.745</p>
+                        <p>A × R^(2/3) = 13.42</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Risoluzione iterativa</h4>
+                        <p>Provando diversi valori di h:</p>
+                        <p>Per h = 1.0 m: A = 5.5 m², R = 0.72 m → A×R^(2/3) = 4.4 (troppo basso)</p>
+                        <p>Per h = 1.5 m: A = 9.375 m², R = 1.05 m → A×R^(2/3) = 9.6 (ancora basso)</p>
+                        <p>Per h = 1.8 m: A = 12.06 m², R = 1.21 m → A×R^(2/3) = 13.4 ✓</p>
+                        <p><strong>Risultato: h ≈ 1.8 m</strong></p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>🎯 Strategia Generale di Risoluzione:</strong>
+                    <ol>
+                        <li>Identificare la geometria della sezione</li>
+                        <li>Calcolare i parametri geometrici (A, P, R)</li>
+                        <li>Applicare la formula di Manning per velocità o portata</li>
+                        <li>Calcolare il numero di Froude per determinare il regime</li>
+                        <li>Verificare se necessario le condizioni critiche</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- TAB CALCOLATORE -->
+            <div id="calcolatore" class="tab-content">
+                <h2>🧮 Calcolatore Interattivo</h2>
+                
+                <div class="calculator">
+                    <h3>Calcoli per Correnti a Superficie Libera</h3>
+                    
+                    <div class="input-group">
+                        <label>Tipo di Sezione:</label>
+                        <select id="tipoSezione" onchange="toggleSezioneInputs()">
+                            <option value="rettangolare">Rettangolare</option>
+                            <option value="trapezoidale">Trapezoidale</option>
+                            <option value="triangolare">Triangolare</option>
+                        </select>
+                    </div>
+                    
+                    <div class="grid">
+                        <div>
+                            <div class="input-group">
+                                <label>Larghezza di fondo B (m):</label>
+                                <input type="number" id="larghezza" value="3" step="0.1">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Tirante h (m):</label>
+                                <input type="number" id="tirante" value="1.2" step="0.1">
+                            </div>
+                            
+                            <div class="input-group" id="pendenzaSpondeGroup" style="display: none;">
+                                <label>Pendenza sponde m:</label>
+                                <input type="number" id="pendenzaSponde" value="1.5" step="0.1">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Pendenza del fondo i:</label>
+                                <input type="number" id="pendenzaFondo" value="0.001" step="0.0001">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="input-group">
+                                <label>Coefficiente di Manning n:</label>
+                                <select id="manning">
+                                    <option value="0.012">Cemento liscio (0.012)</option>
+                                    <option value="0.013" selected>Cemento normale (0.013)</option>
+                                    <option value="0.015">Calcestruzzo (0.015)</option>
+                                    <option value="0.025">Terra compatta (0.025)</option>
+                                    <option value="0.030">Terra naturale (0.030)</option>
+                                    <option value="0.035">Ghiaia (0.035)</option>
+                                    <option value="0.050">Alveo roccioso (0.050)</option>
+                                    <option value="custom">Personalizzato</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group" id="manningCustom" style="display: none;">
+                                <label>Valore personalizzato n:</label>
+                                <input type="number" id="manningValue" value="0.020" step="0.001">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Tipo di calcolo:</label>
+                                <select id="tipoCalcolo">
+                                    <option value="portata">Calcola portata e regime</option>
+                                    <option value="tirante">Calcola tirante (da portata)</option>
+                                    <option value="critico">Calcola condizioni critiche</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group" id="portataInput" style="display: none;">
+                                <label>Portata Q (m³/s):</label>
+                                <input type="number" id="portataValue" value="5" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="calcolaSuperficiLibere()">🌊 Calcola</button>
+                    <button class="btn" onclick="resetCalcolatore()">🔄 Reset</button>
+                    
+                    <div class="result" id="risultatoSuperfici">
+                        Inserisci i dati e clicca "Calcola" per vedere il risultato
+                    </div>
+                    
+                    <div id="dettagliSuperfici" style="display: none; margin-top: 20px;">
+                        <h4 style="color: white;">📊 Dettagli del Calcolo:</h4>
+                        <div id="passiSuperfici" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB ESERCIZI -->
+            <div id="esercizi" class="tab-content">
+                <h2>📝 Esercizi per Praticare</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 1: Canale di Irrigazione</div>
+                    <p><strong>Testo:</strong> Un canale di irrigazione rettangolare in calcestruzzo (n = 0.015) ha larghezza B = 2.5 m, tirante h = 0.8 m, e pendenza i = 0.0008. Calcolare la portata e determinare se il regime è lento o veloce.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneSuperfici(1)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneSuperfici1" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. A = B×h = 2.5×0.8 = 2.0 m²</p>
+                            <p>2. P = B+2h = 2.5+1.6 = 4.1 m</p>
+                            <p>3. R = A/P = 2.0/4.1 = 0.488 m</p>
+                            <p>4. v = (1/0.015)×(0.488)^(2/3)×(0.0008)^0.5 = 1.46 m/s</p>
+                            <p>5. Q = A×v = 2.0×1.46 = <strong>2.92 m³/s</strong></p>
+                            <p>6. Fr = 1.46/√(9.81×0.8) = 0.52 < 1 → <strong>REGIME LENTO</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 2: Confronto Sezioni</div>
+                    <p><strong>Testo:</strong> Confrontare la portata di due canali con stessa area bagnata A = 4 m² e stessa pendenza i = 0.001:</p>
+                    <ul>
+                        <li>a) Canale rettangolare: B = 4 m, h = 1 m</li>
+                        <li>b) Canale rettangolare: B = 2 m, h = 2 m</li>
+                    </ul>
+                    <p>Assumere n = 0.020 per entrambi. Quale trasporta più acqua?</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneSuperfici(2)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneSuperfici2" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p><strong>Canale a) B=4m, h=1m:</strong></p>
+                            <p>P = 4+2×1 = 6 m → R = 4/6 = 0.667 m</p>
+                            <p>Q = (4/0.020)×(0.667)^(2/3)×(0.001)^0.5 = 4.48 m³/s</p>
+                            
+                            <p><strong>Canale b) B=2m, h=2m:</strong></p>
+                            <p>P = 2+2×2 = 6 m → R = 4/6 = 0.667 m</p>
+                            <p>Q = (4/0.020)×(0.667)^(2/3)×(0.001)^0.5 = 4.48 m³/s</p>
+                            
+                            <p><strong>Risultato:</strong> Stesso R → stessa portata! Il raggio idraulico è il parametro chiave.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 3: Canale Trapezoidale</div>
+                    <p><strong>Testo:</strong> Un canale trapezoidale ha larghezza di fondo b = 3 m, tirante h = 1.5 m, pendenza delle sponde m = 2, pendenza del fondo i = 0.0006, e n = 0.025. Calcolare portata e regime.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneSuperfici(3)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneSuperfici3" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. A = h(b+mh) = 1.5(3+2×1.5) = 1.5×6 = 9.0 m²</p>
+                            <p>2. P = b+2h√(1+m²) = 3+2×1.5×√(1+4) = 3+6.71 = 9.71 m</p>
+                            <p>3. R = A/P = 9.0/9.71 = 0.927 m</p>
+                            <p>4. v = (1/0.025)×(0.927)^(2/3)×(0.0006)^0.5 = 2.26 m/s</p>
+                            <p>5. Q = A×v = 9.0×2.26 = <strong>20.3 m³/s</strong></p>
+                            <p>6. B_superficie = b+2mh = 3+2×2×1.5 = 9 m</p>
+                            <p>7. D = A/B = 9.0/9 = 1.0 m</p>
+                            <p>8. Fr = 2.26/√(9.81×1.0) = 0.72 < 1 → <strong>REGIME LENTO</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 4: Progetto Ottimale</div>
+                    <p><strong>Testo:</strong> Progettare la sezione rettangolare più efficiente (minimo perimetro bagnato) per trasportare Q = 8 m³/s con v = 1.5 m/s. Calcolare le dimensioni ottimali.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzioneSuperfici(4)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzioneSuperfici4" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. Area necessaria: A = Q/v = 8/1.5 = 5.33 m²</p>
+                            <p>2. Per sezione rettangolare ottimale: B = 2h</p>
+                            <p>3. A = B×h = 2h×h = 2h² = 5.33</p>
+                            <p>4. h = √(5.33/2) = 1.63 m</p>
+                            <p>5. B = 2h = 3.26 m</p>
+                            <p><strong>Sezione ottimale: B = 3.26 m, h = 1.63 m</strong></p>
+                            <p>Verifica: P = 3.26+2×1.63 = 6.52 m (minimo possibile)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>💪 Suggerimenti Avanzati:</strong>
+                    <ul>
+                        <li>Per sezioni rettangolari ottimali: B = 2h (larghezza = 2×tirante)</li>
+                        <li>Per sezioni trapezoidali ottimali: le pareti formano 60° con l'orizzontale</li>
+                        <li>Il raggio idraulico è sempre il parametro chiave per le prestazioni</li>    
+                        <li>In progetti reali, considerare sempre margini di sicurezza</li>
+                        <li>Il regime lento è preferibile per stabilità e minor manutenzione</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Nascondere tutti i contenuti
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Rimuovere classe active da tutti i tab
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrare il contenuto selezionato
+            document.getElementById(tabName).classList.add('active');
+            
+            // Attivare il tab selezionato
+            event.target.classList.add('active');
+        }
+        
+        function toggleSezioneInputs() {
+            const tipoSezione = document.getElementById('tipoSezione').value;
+            const pendenzaSpondeGroup = document.getElementById('pendenzaSpondeGroup');
+            const larghezzaInput = document.getElementById('larghezza');
+            const larghezzaLabel = larghezzaInput.previousElementSibling;
+            
+            if (tipoSezione === 'triangolare') {
+                pendenzaSpondeGroup.style.display = 'block';
+                larghezzaInput.parentElement.style.display = 'none';
+            } else if (tipoSezione === 'trapezoidale') {
+                pendenzaSpondeGroup.style.display = 'block';
+                larghezzaInput.parentElement.style.display = 'block';
+                larghezzaLabel.textContent = 'Larghezza di fondo b (m):';
+            } else {
+                pendenzaSpondeGroup.style.display = 'none';
+                larghezzaInput.parentElement.style.display = 'block';
+                larghezzaLabel.textContent = 'Larghezza B (m):';
+            }
+        }
+        
+        function toggleManningCustom() {
+            const manning = document.getElementById('manning').value;
+            const customGroup = document.getElementById('manningCustom');
+            
+            if (manning === 'custom') {
+                customGroup.style.display = 'block';
+            } else {
+                customGroup.style.display = 'none';
+            }
+        }
+        
+        function toggleTipoCalcolo() {
+            const tipoCalcolo = document.getElementById('tipoCalcolo').value;
+            const portataInput = document.getElementById('portataInput');
+            
+            if (tipoCalcolo === 'tirante' || tipoCalcolo === 'critico') {
+                portataInput.style.display = 'block';
+            } else {
+                portataInput.style.display = 'none';
+            }
+        }
+        
+        function calcolaSuperficiLibere() {
+            const tipoSezione = document.getElementById('tipoSezione').value;
+            const B = parseFloat(document.getElementById('larghezza').value);
+            const h = parseFloat(document.getElementById('tirante').value);
+            const m = parseFloat(document.getElementById('pendenzaSponde').value);
+            const i = parseFloat(document.getElementById('pendenzaFondo').value);
+            const manning = document.getElementById('manning').value;
+            const n = manning === 'custom' ? parseFloat(document.getElementById('manningValue').value) : parseFloat(manning);
+            const tipoCalcolo = document.getElementById('tipoCalcolo').value;
+            
+            let A, P, R, B_sup;
+            let risultato = '';
+            let dettagli = '';
+            
+            // Calcolo parametri geometrici
+            if (tipoSezione === 'rettangolare') {
+                A = B * h;
+                P = B + 2 * h;
+                B_sup = B;
+            } else if (tipoSezione === 'trapezoidale') {
+                A = h * (B + m * h);
+                P = B + 2 * h * Math.sqrt(1 + m * m);
+                B_sup = B + 2 * m * h;
+            } else { // triangolare
+                A = m * h * h;
+                P = 2 * h * Math.sqrt(1 + m * m);
+                B_sup = 2 * m * h;
+            }
+            
+            R = A / P;
+            const D = A / B_sup; // Tirante idraulico
+            
+            if (tipoCalcolo === 'portata') {
+                // Calcolo portata e regime
+                const v = (1/n) * Math.pow(R, 2/3) * Math.sqrt(i);
+                const Q = A * v;
+                const Fr = v / Math.sqrt(9.81 * D);
+                
+                let regime = '';
+                let coloreRegime = '';
+                if (Fr < 1) {
+                    regime = 'LENTO (subcritico)';
+                    coloreRegime = '#74b9ff';
+                } else if (Fr > 1) {
+                    regime = 'VELOCE (supercritico)';
+                    coloreRegime = '#fd79a8';
+                } else {
+                    regime = 'CRITICO';
+                    coloreRegime = '#fdcb6e';
+                }
+                
+                risultato = `Portata: ${Q.toFixed(2)} m³/s | Regime: <span style="color: ${coloreRegime}; font-weight: bold;">${regime}</span>`;
+                
+                dettagli = `
+                    <strong>Parametri geometrici:</strong><br>
+                    • Tipo sezione: ${tipoSezione}<br>
+                    • Area bagnata A: ${A.toFixed(2)} m²<br>
+                    • Perimetro bagnato P: ${P.toFixed(2)} m<br>
+                    • Raggio idraulico R: ${R.toFixed(3)} m<br>
+                    • Tirante idraulico D: ${D.toFixed(3)} m<br>
+                    <br>
+                    <strong>Risultati idraulici:</strong><br>
+                    • Velocità media v: ${v.toFixed(2)} m/s<br>
+                    • Portata Q: ${Q.toFixed(2)} m³/s<br>
+                    • Numero di Froude Fr: ${Fr.toFixed(2)}<br>
+                    • Regime di moto: <span style="color: ${coloreRegime};">${regime}</span><br>
+                    • Coefficiente Manning n: ${n}
+                `;
+                
+            } else if (tipoCalcolo === 'critico') {
+                // Calcolo condizioni critiche
+                const Q = parseFloat(document.getElementById('portataValue').value);
+                
+                let h_c, v_c, A_c;
+                
+                if (tipoSezione === 'rettangolare') {
+                    const q = Q / B;
+                    h_c = Math.pow(q * q / 9.81, 1/3);
+                    A_c = B * h_c;
+                    v_c = Q / A_c;
+                } else {
+                    // Per sezioni non rettangolari serve iterazione
+                    h_c = 1.0; // Valore iniziale
+                    for (let iter = 0; iter < 20; iter++) {
+                        if (tipoSezione === 'trapezoidale') {
+                            A_c = h_c * (B + m * h_c);
+                            const B_c = B + 2 * m * h_c;
+                            const D_c = A_c / B_c;
+                        } else { // triangolare
+                            A_c = m * h_c * h_c;
+                            const B_c = 2 * m * h_c;
+                            const D_c = A_c / B_c;
+                        }
+                        
+                        v_c = Q / A_c;
+                        const Fr_calc = v_c / Math.sqrt(9.81 * D_c);
+                        
+                        if (Math.abs(Fr_calc - 1.0) < 0.001) break;
+                        
+                        if (Fr_calc > 1.0) {
+                            h_c += 0.01;
+                        } else {
+                            h_c -= 0.01;
+                        }
+                    }
+                }
+                
+                risultato = `Tirante critico: ${h_c.toFixed(2)} m | Velocità critica: ${v_c.toFixed(2)} m/s`;
+                
+                const confronto = h > h_c ? 'LENTO' : (h < h_c ? 'VELOCE' : 'CRITICO');
+                const coloreConfronto = h > h_c ? '#74b9ff' : (h < h_c ? '#fd79a8' : '#fdcb6e');
+                
+                dettagli = `
+                    <strong>Condizioni critiche per Q = ${Q} m³/s:</strong><br>
+                    • Tirante critico h_c: ${h_c.toFixed(3)} m<br>
+                    • Area critica A_c: ${A_c.toFixed(2)} m²<br>
+                    • Velocità critica v_c: ${v_c.toFixed(2)} m/s<br>
+                    • Numero di Froude critico: 1.00<br>
+                    <br>
+                    <strong>Confronto con tirante attuale (${h} m):</strong><br>
+                    • h/h_c = ${(h/h_c).toFixed(2)}<br>
+                    • Regime attuale: <span style="color: ${coloreConfronto};">${confronto}</span>
+                `;
+            }
+            
+            document.getElementById('risultatoSuperfici').innerHTML = risultato;
+            document.getElementById('passiSuperfici').innerHTML = dettagli;
+            document.getElementById('dettagliSuperfici').style.display = 'block';
+        }
+        
+        function resetCalcolatore() {
+            document.getElementById('tipoSezione').selectedIndex = 0;
+            document.getElementById('larghezza').value = '3';
+            document.getElementById('tirante').value = '1.2';
+            document.getElementById('pendenzaSponde').value = '1.5';
+            document.getElementById('pendenzaFondo').value = '0.001';
+            document.getElementById('manning').selectedIndex = 1;
+            document.getElementById('manningValue').value = '0.020';
+            document.getElementById('tipoCalcolo').selectedIndex = 0;
+            document.getElementById('portataValue').value = '5';
+            
+            document.getElementById('risultatoSuperfici').innerHTML = 'Inserisci i dati e clicca "Calcola" per vedere il risultato';
+            document.getElementById('dettagliSuperfici').style.display = 'none';
+            
+            toggleSezioneInputs();
+            toggleManningCustom();
+            toggleTipoCalcolo();
+        }
+        
+        function mostraSoluzioneSuperfici(numeroEsercizio) {
+            const soluzione = document.getElementById(`soluzioneSuperfici${numeroEsercizio}`);
+            if (soluzione.style.display === 'none' || soluzione.style.display === '') {
+                soluzione.style.display = 'block';
+            } else {
+                soluzione.style.display = 'none';
+            }
+        }
+        
+        // Event listeners
+        document.getElementById('tipoSezione').addEventListener('change', toggleSezioneInputs);
+        document.getElementById('manning').addEventListener('change', toggleManningCustom);
+        document.getElementById('tipoCalcolo').addEventListener('change', toggleTipoCalcolo);
+        
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleSezioneInputs();
+            toggleManningCustom();
+            toggleTipoCalcolo();
+        });
+    </script>
+</body>
+</html>

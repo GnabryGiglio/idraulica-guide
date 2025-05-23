@@ -1,0 +1,1213 @@
+                        <p><strong>Il risultato è coerente!</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 2: Bernoulli Reale - Condotta con Perdite</div>
+                    
+                    <p><strong>Problema:</strong> Una condotta di acciaio (D = 200 mm, L = 1000 m, f = 0.020) collega due serbatoi con dislivello di 20 m. Calcolare la portata considerando anche una valvola a saracinesca (K = 0.2) e le perdite di imbocco/sbocco.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Impostare Bernoulli modificato</h4>
+                        <p>H₁ = H₂ + ΔH_perdite</p>
+                        <p>z₁ + p₁/γ + v₁²/2g = z₂ + p₂/γ + v₂²/2g + ΣΔH</p>
+                        <p>Semplificazioni: p₁ = p₂ = 0, v₁ = v₂ = 0 (serbatoi grandi)</p>
+                        <p>z₁ - z₂ = 20 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Calcolare le perdite</h4>
+                        <p><strong>Perdite distribuite:</strong> ΔH_d = f × (L/D) × (v²/2g)</p>
+                        <p><strong>Perdite localizzate:</strong> ΔH_l = (K_imbocco + K_valvola + K_sbocco) × (v²/2g)</p>
+                        <p>K_totale = 0.5 + 0.2 + 1.0 = 1.7</p>
+                        <p>ΔH_l = 1.7 × (v²/2g)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Impostare l'equazione</h4>
+                        <p>ΔH_d = 0.020 × (1000/0.2) × (v²/2g) = 100 × (v²/2g)</p>
+                        <p>ΔH_totale = 100 × (v²/2g) + 1.7 × (v²/2g) = 101.7 × (v²/2g)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Risolvere per la velocità</h4>
+                        <p>20 = 101.7 × (v²/2g)</p>
+                        <p>v²/2g = 20/101.7 = 0.197 m</p>
+                        <p>v² = 0.197 × 2 × 9.81 = 3.86</p>
+                        <p>v = 1.96 m/s</p>
+                        <p>Portata: Q = A×v = (π×0.2²/4)×1.96 = <strong>0.0616 m³/s = 61.6 L/s</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 3: Tubo di Venturi</div>
+                    
+                    <p><strong>Problema:</strong> Un tubo di Venturi ha diametro di ingresso 150 mm e diametro in gola 75 mm. I manometri indicano 200 kPa all'ingresso e 150 kPa in gola. Calcolare la portata (Cd = 0.98).</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Dati geometrici</h4>
+                        <p>D₁ = 150 mm = 0.15 m → A₁ = π×(0.15)²/4 = 0.0177 m²</p>
+                        <p>D₂ = 75 mm = 0.075 m → A₂ = π×(0.075)²/4 = 0.0044 m²</p>
+                        <p>Rapporto: A₂/A₁ = 0.0044/0.0177 = 0.25</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Differenza di pressione</h4>
+                        <p>Δp = p₁ - p₂ = 200 - 150 = 50 kPa = 50.000 Pa</p>
+                        <p>In altezza d'acqua: Δh = Δp/γ = 50.000/9810 = 5.10 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Applicare la formula del Venturi</h4>
+                        <p>Q = Cd × A₂ × √(2g × Δh / (1 - (A₂/A₁)²))</p>
+                        <p>Q = 0.98 × 0.0044 × √(2×9.81×5.10 / (1 - 0.25²))</p>
+                        <p>Q = 0.98 × 0.0044 × √(100.04 / 0.9375)</p>
+                        <p>Q = 0.98 × 0.0044 × 10.33 = <strong>0.0446 m³/s = 44.6 L/s</strong></p>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 4: Sistema di Pompaggio</div>
+                    
+                    <p><strong>Problema:</strong> Una pompa deve sollevare 50 L/s di acqua da un pozzo profondo 15 m a un serbatoio posto 10 m sopra il suolo. La condotta è in PVC (D = 150 mm, L = 200 m, f = 0.020). Calcolare la prevalenza richiesta.</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Dislivello geodetico</h4>
+                        <p>H_geodetico = 15 + 10 = 25 m</p>
+                        <p>(profondità pozzo + altezza serbatoio)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Velocità nella condotta</h4>
+                        <p>Q = 50 L/s = 0.050 m³/s</p>
+                        <p>A = π×D²/4 = π×(0.15)²/4 = 0.0177 m²</p>
+                        <p>v = Q/A = 0.050/0.0177 = 2.83 m/s</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Perdite distribuite</h4>
+                        <p>ΔH_d = f × (L/D) × (v²/2g)</p>
+                        <p>ΔH_d = 0.020 × (200/0.15) × (2.83²/19.62)</p>
+                        <p>ΔH_d = 0.020 × 1333.3 × 0.408 = 10.9 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Perdite localizzate</h4>
+                        <p>Assumendo: imbocco + curve + valvole + sbocco</p>
+                        <p>K_totale ≈ 0.5 + 1.5 + 0.5 + 1.0 = 3.5</p>
+                        <p>ΔH_l = 3.5 × (v²/2g) = 3.5 × 0.408 = 1.4 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 5: Prevalenza totale</h4>
+                        <p>H_pompa = H_geodetico + ΔH_d + ΔH_l</p>
+                        <p>H_pompa = 25 + 10.9 + 1.4 = <strong>37.3 m</strong></p>
+                        <p>Potenza teorica: P = γ×Q×H = 9810×0.050×37.3 = <strong>18.3 kW</strong></p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>🎯 Strategia Generale di Risoluzione:</strong>
+                    <ol>
+                        <li>Identificare chiaramente le sezioni di calcolo</li>
+                        <li>Scegliere la forma appropriata di Bernoulli (ideale o reale)</li>
+                        <li>Elencare tutte le perdite di carico</li>
+                        <li>Impostare l'equazione dell'energia</li>
+                        <li>Risolvere iterativamente se necessario</li>
+                        <li>Verificare sempre la coerenza fisica dei risultati</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- TAB CALCOLATORE -->
+            <div id="calcolatore" class="tab-content">
+                <h2>🧮 Calcolatore Idrodinamica</h2>
+                
+                <div class="calculator">
+                    <h3>Calcoli di Idrodinamica</h3>
+                    
+                    <div class="input-group">
+                        <label>Tipo di Calcolo:</label>
+                        <select id="tipoCalcolo">
+                            <option value="bernoulli">Teorema di Bernoulli</option>
+                            <option value="venturi">Tubo di Venturi</option>
+                            <option value="orifizio">Efflusso da Orifizio</option>
+                            <option value="pompaggio">Sistema di Pompaggio</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Sezione Bernoulli -->
+                    <div id="bernoulliInputs">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Quota 1 z₁ (m):</label>
+                                    <input type="number" id="quota1" value="10" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Pressione 1 p₁ (kPa):</label>
+                                    <input type="number" id="pressione1" value="200" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Velocità 1 v₁ (m/s):</label>
+                                    <input type="number" id="velocita1" value="2" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Quota 2 z₂ (m):</label>
+                                    <input type="number" id="quota2" value="5" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Pressione 2 p₂ (kPa):</label>
+                                    <input type="number" id="pressione2" value="150" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Peso specifico γ (N/m³):</label>
+                                    <input type="number" id="pesoSpecifico" value="9810" step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Venturi -->
+                    <div id="venturiInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Diametro ingresso D₁ (mm):</label>
+                                    <input type="number" id="diametro1" value="150" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Diametro gola D₂ (mm):</label>
+                                    <input type="number" id="diametro2" value="75" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Pressione 1 p₁ (kPa):</label>
+                                    <input type="number" id="pressioneV1" value="200" step="1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Pressione 2 p₂ (kPa):</label>
+                                    <input type="number" id="pressioneV2" value="150" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Coefficiente Cd:</label>
+                                    <input type="number" id="coefficiente" value="0.98" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Orifizio -->
+                    <div id="orifizioInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Carico h (m):</label>
+                                    <input type="number" id="carico" value="3" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Diametro orifizio (mm):</label>
+                                    <input type="number" id="diametroOr" value="50" step="1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Coefficiente Cd:</label>
+                                    <input type="number" id="coefficienteOr" value="0.6" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sezione Pompaggio -->
+                    <div id="pompaggioInputs" style="display: none;">
+                        <div class="grid">
+                            <div>
+                                <div class="input-group">
+                                    <label>Portata Q (L/s):</label>
+                                    <input type="number" id="portata" value="50" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Dislivello geodetico (m):</label>
+                                    <input type="number" id="dislivello" value="25" step="0.1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Diametro condotta (mm):</label>
+                                    <input type="number" id="diametroP" value="150" step="1">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="input-group">
+                                    <label>Lunghezza condotta (m):</label>
+                                    <input type="number" id="lunghezza" value="200" step="1">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Coefficiente attrito f:</label>
+                                    <input type="number" id="attrito" value="0.020" step="0.001">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label>Perdite localizzate ΣK:</label>
+                                    <input type="number" id="perditeLocal" value="3.5" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="calcola()">🌊 Calcola</button>
+                    <button class="btn" onclick="reset()">🔄 Reset</button>
+                    
+                    <div class="result" id="risultato">
+                        Seleziona il tipo di calcolo e inserisci i dati
+                    </div>
+                    
+                    <div id="dettagli" style="display: none; margin-top: 20px;">
+                        <h4 style="color: white;">📊 Dettagli del Calcolo:</h4>
+                        <div id="passi" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB ESERCIZI -->
+            <div id="esercizi" class="tab-content">
+                <h2>📝 Esercizi per Praticare</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 1: Bernoulli Base</div>
+                    <p><strong>Testo:</strong> L'acqua scorre in una condotta orizzontale. Nella sezione A (D = 200 mm) la pressione è 300 kPa e la velocità 2 m/s. Nella sezione B (D = 100 mm) la pressione è 250 kPa. Calcolare la velocità nella sezione B.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzione(1)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione1" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. <strong>Continuità:</strong> A_A×v_A = A_B×v_B</p>
+                            <p>   A_A = π×0.2²/4 = 0.0314 m², A_B = π×0.1²/4 = 0.0079 m²</p>
+                            <p>   v_B = v_A×(A_A/A_B) = 2×(0.0314/0.0079) = <strong>8 m/s</strong></p>
+                            <p>2. <strong>Verifica con Bernoulli:</strong> Piccola differenza dovuta alle perdite!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 2: Sifone</div>
+                    <p><strong>Testo:</strong> Un sifone (D = 50 mm) trasferisce acqua da un serbatoio alto 4 m. Il punto più alto del sifone è 2 m sopra il livello dell'acqua. Calcolare la velocità di efflusso e la pressione nel punto più alto.</p>
+                    
+                    <button class="btn" onclick="mostraSoluzione(2)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione2" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. <strong>Velocità di efflusso:</strong> v = √(2gh) = √(2×9.81×4) = <strong>8.86 m/s</strong></p>
+                            <p>2. <strong>Pressione nel punto alto:</strong> p_alto = -6×9810 = <strong>-58.9 kPa</strong></p>
+                            <p><strong>Depressione significativa - attenzione alla cavitazione!</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esercizio 3: Pompa Centrifuga</div>
+                    <p><strong>Testo:</strong> Una pompa solleva 80 L/s da 8 m di profondità a 15 m di altezza. Condotta D=200mm, L=300m, f=0.018. Calcolare prevalenza e potenza (η=70%).</p>
+                    
+                    <button class="btn" onclick="mostraSoluzione(3)">💡 Mostra Soluzione</button>
+                    
+                    <div id="soluzione3" style="display: none; margin-top: 15px;">
+                        <div class="step">
+                            <h4>Soluzione:</h4>
+                            <p>1. <strong>Dislivello:</strong> 8 + 15 = 23 m</p>
+                            <p>2. <strong>Velocità:</strong> v = 0.080/0.0314 = 2.55 m/s</p>
+                            <p>3. <strong>Perdite distribuite:</strong> 5.95 m</p>
+                            <p>4. <strong>Prevalenza:</strong> H = 23 + 5.95 + 2 = <strong>30.95 m</strong></p>
+                            <p>5. <strong>Potenza:</strong> P = 24.3/0.70 = <strong>34.7 kW</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>💪 Suggerimenti per l'Esame:</strong>
+                    <ul>
+                        <li>Sempre verificare la conservazione della massa (continuità)</li>
+                        <li>Distinguere fluidi ideali da reali</li>
+                        <li>Elencare sistematicamente tutte le perdite</li>
+                        <li>Verificare coerenza dimensionale e fisica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Nascondere tutti i contenuti
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Rimuovere classe active da tutti i tab
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrare il contenuto selezionato
+            document.getElementById(tabName).classList.add('active');
+            
+            // Attivare il tab selezionato
+            event.target.classList.add('active');
+        }
+        
+        function toggleInputs() {
+            const tipo = document.getElementById('tipoCalcolo').value;
+            
+            // Nascondere tutti
+            document.getElementById('bernoulliInputs').style.display = 'none';
+            document.getElementById('venturiInputs').style.display = 'none';
+            document.getElementById('orifizioInputs').style.display = 'none';
+            document.getElementById('pompaggioInputs').style.display = 'none';
+            
+            // Mostrare quello selezionato
+            if (tipo === 'bernoulli') {
+                document.getElementById('bernoulliInputs').style.display = 'block';
+            } else if (tipo === 'venturi') {
+                document.getElementById('venturiInputs').style.display = 'block';
+            } else if (tipo === 'orifizio') {
+                document.getElementById('orifizioInputs').style.display = 'block';
+            } else if (tipo === 'pompaggio') {
+                document.getElementById('pompaggioInputs').style.display = 'block';
+            }
+        }
+        
+        function calcola() {
+            const tipo = document.getElementById('tipoCalcolo').value;
+            let risultato = '';
+            let dettagli = '';
+            
+            if (tipo === 'bernoulli') {
+                const z1 = parseFloat(document.getElementById('quota1').value);
+                const p1 = parseFloat(document.getElementById('pressione1').value) * 1000;
+                const v1 = parseFloat(document.getElementById('velocita1').value);
+                const z2 = parseFloat(document.getElementById('quota2').value);
+                const p2 = parseFloat(document.getElementById('pressione2').value) * 1000;
+                const gamma = parseFloat(document.getElementById('pesoSpecifico').value);
+                
+                const H1 = z1 + p1/gamma + (v1*v1)/(2*9.81);
+                const H2_noCinetica = z2 + p2/gamma;
+                const v2_sq_2g = H1 - H2_noCinetica;
+                const v2 = Math.sqrt(Math.abs(v2_sq_2g * 2 * 9.81));
+                
+                risultato = `Velocità v₂ = ${v2.toFixed(2)} m/s`;
+                
+                dettagli = `
+                    <strong>Applicazione Bernoulli:</strong><br>
+                    • H₁ = ${z1} + ${(p1/gamma).toFixed(2)} + ${(v1*v1/(2*9.81)).toFixed(2)} = ${H1.toFixed(2)} m<br>
+                    • H₂ (senza cinetica) = ${z2} + ${(p2/gamma).toFixed(2)} = ${H2_noCinetica.toFixed(2)} m<br>
+                    • v₂²/2g = ${v2_sq_2g.toFixed(2)} m<br>
+                    • v₂ = ${v2.toFixed(2)} m/s
+                `;
+                
+            } else if (tipo === 'venturi') {
+                const D1 = parseFloat(document.getElementById('diametro1').value) / 1000;
+                const D2 = parseFloat(document.getElementById('diametro2').value) / 1000;
+                const p1 = parseFloat(document.getElementById('pressioneV1').value) * 1000;
+                const p2 = parseFloat(document.getElementById('pressioneV2').value) * 1000;
+                const Cd = parseFloat(document.getElementById('coefficiente').value);
+                
+                const A1 = Math.PI * D1 * D1 / 4;
+                const A2 = Math.PI * D2 * D2 / 4;
+                const beta = A2 / A1;
+                const deltaP = p1 - p2;
+                const deltaH = deltaP / 9810;
+                
+                const Q = Cd * A2 * Math.sqrt(2 * 9.81 * deltaH / (1 - beta * beta));
+                
+                risultato = `Portata Q = ${(Q*1000).toFixed(1)} L/s`;
+                
+                dettagli = `
+                    <strong>Tubo di Venturi:</strong><br>
+                    • A₁ = ${A1.toFixed(6)} m², A₂ = ${A2.toFixed(6)} m²<br>
+                    • β = A₂/A₁ = ${beta.toFixed(3)}<br>
+                    • Δp = ${(deltaP/1000).toFixed(0)} kPa<br>
+                    • Q = ${(Q*1000).toFixed(1)} L/s
+                `;
+                
+            } else if (tipo === 'orifizio') {
+                const h = parseFloat(document.getElementById('carico').value);
+                const D = parseFloat(document.getElementById('diametroOr').value) / 1000;
+                const Cd = parseFloat(document.getElementById('coefficienteOr').value);
+                
+                const A = Math.PI * D * D / 4;
+                const v = Math.sqrt(2 * 9.81 * h);
+                const Q = Cd * A * v;
+                
+                risultato = `Portata Q = ${(Q*1000).toFixed(1)} L/s`;
+                
+                dettagli = `
+                    <strong>Efflusso da orifizio:</strong><br>
+                    • Velocità teorica: v = √(2gh) = ${v.toFixed(2)} m/s<br>
+                    • Area: A = ${A.toFixed(6)} m²<br>
+                    • Q = Cd × A × v = ${(Q*1000).toFixed(1)} L/s
+                `;
+                
+            } else if (tipo === 'pompaggio') {
+                const Q = parseFloat(document.getElementById('portata').value) / 1000;
+                const H_geod = parseFloat(document.getElementById('dislivello').value);
+                const D = parseFloat(document.getElementById('diametroP').value) / 1000;
+                const L = parseFloat(document.getElementById('lunghezza').value);
+                const f = parseFloat(document.getElementById('attrito').value);
+                const K = parseFloat(document.getElementById('perditeLocal').value);
+                
+                const A = Math.PI * D * D / 4;
+                const v = Q / A;
+                const v_sq_2g = v * v / (2 * 9.81);
+                
+                const H_dist = f * (L / D) * v_sq_2g;
+                const H_loc = K * v_sq_2g;
+                const H_tot = H_geod + H_dist + H_loc;
+                
+                risultato = `Prevalenza H = ${H_tot.toFixed(1)} m`;
+                
+                dettagli = `
+                    <strong>Sistema di pompaggio:</strong><br>
+                    • Velocità: v = ${v.toFixed(2)} m/s<br>
+                    • H geodetico: ${H_geod} m<br>
+                    • H distribuite: ${H_dist.toFixed(2)} m<br>
+                    • H localizzate: ${H_loc.toFixed(2)} m<br>
+                    • H totale: ${H_tot.toFixed(1)} m
+                `;
+            }
+            
+            document.getElementById('risultato').innerHTML = risultato;
+            document.getElementById('passi').innerHTML = dettagli;
+            document.getElementById('dettagli').style.display = 'block';
+        }
+        
+        function reset() {
+            document.getElementById('risultato').innerHTML = 'Seleziona il tipo di calcolo e inserisci i dati';
+            document.getElementById('dettagli').style.display = 'none';
+            
+            // Reset tutti i campi ai valori default
+            document.getElementById('quota1').value = '10';
+            document.getElementById('pressione1').value = '200';
+            document.getElementById('velocita1').value = '2';
+            document.getElementById('quota2').value = '5';
+            document.getElementById('pressione2').value = '150';
+            document.getElementById('pesoSpecifico').value = '9810';
+            
+            document.getElementById('diametro1').value = '150';
+            document.getElementById('diametro2').value = '75';
+            document.getElementById('pressioneV1').value = '200';
+            document.getElementById('pressioneV2').value = '150';
+            document.getElementById('coefficiente').value = '0.98';
+            
+            document.getElementById('carico').value = '3';
+            document.getElementById('diametroOr').value = '50';
+            document.getElementById('coefficienteOr').value = '0.6';
+            
+            document.getElementById('portata').value = '50';
+            document.getElementById('dislivello').value = '25';
+            document.getElementById('diametroP').value = '150';
+            document.getElementById('lunghezza').value = '200';
+            document.getElementById('attrito').value = '0.020';
+            document.getElementById('perditeLocal').value = '3.5';
+            
+            toggleInputs();
+        }
+        
+        function mostraSoluzione(numeroEsercizio) {
+            const soluzione = document.getElementById(`soluzione${numeroEsercizio}`);
+            if (soluzione.style.display === 'none' || soluzione.style.display === '') {
+                soluzione.style.display = 'block';
+            } else {
+                soluzione.style.display = 'none';
+            }
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const tipoCalcolo = document.getElementById('tipoCalcolo');
+            if (tipoCalcolo) {
+                tipoCalcolo.addEventListener('change', toggleInputs);
+                toggleInputs(); // Inizializza la visualizzazione
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idrodinamica - Guida Interattiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00cec9 0%, #55a3ff 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-tab:last-child {
+            border-right: none;
+        }
+        
+        .nav-tab.active {
+            background: #00b894;
+            color: white;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: #e9ecef;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .bernoulli-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+        
+        .calculator {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(162, 155, 254, 0.3);
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .btn {
+            background: #00cec9;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            background: #00b894;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+        }
+        
+        .result {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .step {
+            background: #e8f5e8;
+            border-left: 4px solid #00b894;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .step h4 {
+            color: #00a085;
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #00cec9;
+        }
+        
+        .highlight {
+            background: #fff3e0;
+            border: 1px solid #ffcc02;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .highlight strong {
+            color: #e65100;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .warning strong {
+            color: #c62828;
+        }
+        
+        .info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .info strong {
+            color: #1565c0;
+        }
+        
+        .connection-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .connection-box strong {
+            color: #7b1fa2;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .exercise-container {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .exercise-title {
+            background: #00cec9;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #00cec9;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Idrodinamica: Fluidi in Movimento</h1>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('teoria')">📚 Teoria</button>
+            <button class="nav-tab" onclick="showTab('bernoulli')">⚡ Bernoulli</button>
+            <button class="nav-tab" onclick="showTab('reali')">🔧 Fluidi Reali</button>
+            <button class="nav-tab" onclick="showTab('esempi')">💡 Esempi</button>
+            <button class="nav-tab" onclick="showTab('calcolatore')">🧮 Calcolatore</button>
+            <button class="nav-tab" onclick="showTab('esercizi')">📝 Esercizi</button>
+        </div>
+        
+        <div class="content">
+            <!-- TAB TEORIA -->
+            <div id="teoria" class="tab-content active">
+                <h2>🎯 Che cos'è l'Idrodinamica?</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    L'<strong>idrodinamica</strong> studia il comportamento dei fluidi in movimento. È complementare all'idrostatica e fornisce gli strumenti per analizzare flussi, portate, velocità e pressioni nei sistemi idraulici.
+                </p>
+                
+                <div class="connection-box">
+                    <strong>🔗 Collegamento con quello che hai già studiato:</strong><br>
+                    • <strong>Idrostatica:</strong> Base teorica per pressioni e spinte<br>
+                    • <strong>Lunghe condotte:</strong> Applicazione pratica con perdite di carico<br>
+                    • <strong>Superfici libere:</strong> Moti a pelo libero con energia
+                </div>
+                
+                <h3>🌊 Differenza Fluidi Ideali vs Reali:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">🔵 Fluidi Ideali</h4>
+                        <p><strong>Ipotesi semplificative:</strong></p>
+                        <ul>
+                            <li>Nessuna viscosità (μ = 0)</li>
+                            <li>Nessun attrito interno</li>
+                            <li>Incomprimibili (ρ = costante)</li>
+                            <li>Moto stazionario</li>
+                            <li>Nessuna perdita di energia</li>
+                        </ul>
+                        <p><strong>Utilizzati per:</strong> Teoria di base, Bernoulli puro, analisi qualitativa</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">🔴 Fluidi Reali</h4>
+                        <p><strong>Caratteristiche realistiche:</strong></p>
+                        <ul>
+                            <li>Viscosità presente (μ > 0)</li>
+                            <li>Attrito e perdite di carico</li>
+                            <li>Effetti della scabrezza</li>
+                            <li>Turbolenza e regime laminare</li>
+                            <li>Perdite di energia per attrito</li>
+                        </ul>
+                        <p><strong>Utilizzati per:</strong> Progettazione reale, calcoli ingegneristici</p>
+                    </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>📐 Equazione di Continuità (Conservazione Massa)</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        A₁ × v₁ = A₂ × v₂ = Q = costante
+                    </div>
+                    <p>In un condotto, il prodotto area×velocità è costante</p>
+                </div>
+                
+                <h3>🎛️ Parametri Fondamentali:</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Parametro</th>
+                        <th>Simbolo</th>
+                        <th>Unità</th>
+                        <th>Significato Fisico</th>
+                    </tr>
+                    <tr>
+                        <td>Velocità</td>
+                        <td>v</td>
+                        <td>m/s</td>
+                        <td>Rapidità del movimento del fluido</td>
+                    </tr>
+                    <tr>
+                        <td>Portata</td>
+                        <td>Q</td>
+                        <td>m³/s</td>
+                        <td>Volume di fluido per unità di tempo</td>
+                    </tr>
+                    <tr>
+                        <td>Pressione</td>
+                        <td>p</td>
+                        <td>Pa</td>
+                        <td>Forza per unità di superficie</td>
+                    </tr>
+                    <tr>
+                        <td>Energia Specifica</td>
+                        <td>H</td>
+                        <td>m</td>
+                        <td>Energia per unità di peso</td>
+                    </tr>
+                </table>
+                
+                <div class="info">
+                    <strong>💡 Concetto Chiave:</strong> L'idrodinamica è basata sui principi di conservazione:
+                    <ul>
+                        <li><strong>Conservazione della massa</strong> → Equazione di continuità</li>
+                        <li><strong>Conservazione dell'energia</strong> → Teorema di Bernoulli</li>
+                        <li><strong>Conservazione della quantità di moto</strong> → Equazioni di Eulero</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TAB BERNOULLI -->
+            <div id="bernoulli" class="tab-content">
+                <h2>⚡ Teorema di Bernoulli</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    Il <strong>teorema di Bernoulli</strong> è il pilastro dell'idrodinamica. Stabilisce che lungo una linea di corrente, l'energia totale specifica rimane costante (per fluidi ideali).
+                </p>
+                
+                <div class="bernoulli-box">
+                    <h3>🎯 Teorema di Bernoulli - Fluidi Ideali</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        z + p/γ + v²/2g = costante
+                    </div>
+                    <p>Energia di posizione + Energia di pressione + Energia cinetica = costante</p>
+                </div>
+                
+                <h3>💫 Significato Fisico delle Energie:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #00b894;">Energia di Posizione (z)</h4>
+                        <p><strong>Altezza geometrica</strong></p>
+                        <p>Energia potenziale gravitazionale</p>
+                        <p>Dipende dalla quota rispetto al riferimento</p>
+                        <p><strong>Unità:</strong> metri [m]</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #fd79a8;">Energia di Pressione (p/γ)</h4>
+                        <p><strong>Altezza piezometrica</strong></p>
+                        <p>Energia di pressione del fluido</p>
+                        <p>Altezza di colonna di fluido equivalente</p>
+                        <p><strong>Unità:</strong> metri [m]</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #a29bfe;">Energia Cinetica (v²/2g)</h4>
+                        <p><strong>Altezza cinetica</strong></p>
+                        <p>Energia dovuta al movimento</p>
+                        <p>Cresce con il quadrato della velocità</p>
+                        <p><strong>Unità:</strong> metri [m]</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #e17055;">Energia Totale (H)</h4>
+                        <p><strong>Carico totale</strong></p>
+                        <p>H = z + p/γ + v²/2g</p>
+                        <p>Costante lungo la corrente (fluidi ideali)</p>
+                        <p><strong>Unità:</strong> metri [m]</p>
+                    </div>
+                </div>
+                
+                <h3>🔧 Applicazioni Pratiche di Bernoulli:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">Tubo di Venturi</h4>
+                        <p>Misura di portata in condotte</p>
+                        <p>Riduzione sezione → ↑velocità → ↓pressione</p>
+                        <p>Q = K√(Δp)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">Efflusso da Serbatoi</h4>
+                        <p>Velocità di efflusso da orifizi</p>
+                        <p>Formula di Torricelli</p>
+                        <p>v = √(2gh)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">Tubo di Pitot</h4>
+                        <p>Misura velocità in un punto</p>
+                        <p>Confronto pressione totale/statica</p>
+                        <p>v = √(2Δp/ρ)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #74b9ff;">Aspirazione Pompe</h4>
+                        <p>Calcolo NPSH disponibile</p>
+                        <p>Prevenzione cavitazione</p>
+                        <p>Altezza massima di aspirazione</p>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ Limitazioni di Bernoulli (Fluidi Ideali):</strong>
+                    <ul>
+                        <li>Non considera le perdite di carico per attrito</li>
+                        <li>Valido solo per moti permanenti</li>
+                        <li>Applicabile lungo una sola linea di corrente</li>
+                        <li>Fluido incomprimibile e non viscoso</li>
+                        <li>Per applicazioni reali serve la versione modificata!</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TAB FLUIDI REALI -->
+            <div id="reali" class="tab-content">
+                <h2>🔧 Fluidi Reali e Bernoulli Modificato</h2>
+                
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+                    Nei <strong>fluidi reali</strong> dobbiamo considerare le perdite di energia dovute alla viscosità e all'attrito. Il teorema di Bernoulli viene modificato per tenere conto di questi effetti.
+                </p>
+                
+                <div class="bernoulli-box">
+                    <h3>🎯 Bernoulli Modificato - Fluidi Reali</h3>
+                    <div style="font-size: 24px; margin: 15px 0;">
+                        H₁ = H₂ + ΔH
+                    </div>
+                    <div style="font-size: 20px; margin: 10px 0;">
+                        z₁ + p₁/γ + v₁²/2g = z₂ + p₂/γ + v₂²/2g + ΔH
+                    </div>
+                    <p>L'energia diminuisce lungo il percorso a causa delle perdite ΔH</p>
+                </div>
+                
+                <div class="connection-box">
+                    <strong>🔗 Collegamento con le Lunghe Condotte:</strong><br>
+                    Le perdite ΔH sono esattamente quelle che hai già studiato!<br>
+                    • <strong>Perdite distribuite:</strong> ΔH = f × (L/D) × (v²/2g) (Darcy-Weisbach)<br>
+                    • <strong>Perdite localizzate:</strong> ΔH = K × (v²/2g) (coefficienti di perdita)<br>
+                    • <strong>Perdite totali:</strong> ΔH = ΔH_distribuite + ΔH_localizzate
+                </div>
+                
+                <h3>🔍 Tipi di Perdite di Carico:</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4 style="color: #e17055;">Perdite Distribuite</h4>
+                        <p><strong>Lungo le condotte</strong></p>
+                        <p>ΔH = f × (L/D) × (v²/2g)</p>
+                        <p>Dovute all'attrito con le pareti</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #e17055;">Perdite Localizzate</h4>
+                        <p><strong>In singole sezioni</strong></p>
+                        <p>ΔH = K × (v²/2g)</p>
+                        <p>Dovute a: curve, valvole, raccordi</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #e17055;">Perdite di Imbocco</h4>
+                        <p><strong>Ingresso condotte</strong></p>
+                        <p>K = 0.5 (spigolo vivo)</p>
+                        <p>K = 0.1 (ben raccordato)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4 style="color: #e17055;">Perdite di Sbocco</h4>
+                        <p><strong>Uscita condotte</strong></p>
+                        <p>K = 1.0 (sempre)</p>
+                        <p>Tutta l'energia cinetica si perde</p>
+                    </div>
+                </div>
+                
+                <h3>🎯 Coefficienti di Perdita Tipici:</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Coefficiente K</th>
+                        <th>Note</th>
+                    </tr>
+                    <tr>
+                        <td>Imbocco spigolo vivo</td>
+                        <td>0.5</td>
+                        <td>Ingresso brusco da serbatoio</td>
+                    </tr>
+                    <tr>
+                        <td>Imbocco raccordato</td>
+                        <td>0.1</td>
+                        <td>Ingresso ben sagomato</td>
+                    </tr>
+                    <tr>
+                        <td>Sbocco</td>
+                        <td>1.0</td>
+                        <td>Sempre, indipendente dalla forma</td>
+                    </tr>
+                    <tr>
+                        <td>Curva 90°</td>
+                        <td>0.4 - 0.9</td>
+                        <td>Dipende dal raggio di curvatura</td>
+                    </tr>
+                    <tr>
+                        <td>Valvola a saracinesca</td>
+                        <td>0.2</td>
+                        <td>Completamente aperta</td>
+                    </tr>
+                    <tr>
+                        <td>Valvola a globo</td>
+                        <td>10</td>
+                        <td>Completamente aperta</td>
+                    </tr>
+                </table>
+                
+                <div class="connection-box">
+                    <strong>🔗 Collegamento con le Superfici Libere:</strong><br>
+                    Anche nei canali a pelo libero ci sono perdite per attrito!<br>
+                    • <strong>Formula di Manning:</strong> v = (1/n) × R^(2/3) × i^(1/2)<br>
+                    • <strong>Pendenza motrice:</strong> i = perdite per unità di lunghezza<br>
+                    • <strong>Energia specifica:</strong> E = z + v²/2g (pressione atmosferica)
+                </div>
+                
+                <div class="info">
+                    <strong>💡 Regola Pratica:</strong> Negli impianti reali, le perdite localizzate sono spesso del 10-30% delle perdite distribuite. In prima approssimazione si possono stimare come il 20% delle perdite distribuite.
+                </div>
+            </div>
+            
+            <!-- TAB ESEMPI -->
+            <div id="esempi" class="tab-content">
+                <h2>💡 Esempi Risolti Passo-Passo</h2>
+                
+                <div class="exercise-container">
+                    <div class="exercise-title">Esempio 1: Bernoulli Ideale - Efflusso da Serbatoio</div>
+                    
+                    <p><strong>Problema:</strong> Un serbatoio con acqua a livello costante ha un orifizio circolare di diametro 5 cm posto a 3 m sotto la superficie libera. Calcolare la velocità e la portata di efflusso (fluido ideale).</p>
+                    
+                    <div class="step">
+                        <h4>Passo 1: Identificare le sezioni di calcolo</h4>
+                        <p>Sezione 1: Superficie libera del serbatoio (A₁ molto grande)</p>
+                        <p>Sezione 2: Orifizio di efflusso</p>
+                        <p>Differenza di quota: z₁ - z₂ = 3 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 2: Applicare Bernoulli</h4>
+                        <p>z₁ + p₁/γ + v₁²/2g = z₂ + p₂/γ + v₂²/2g</p>
+                        <p>Semplificazioni:</p>
+                        <p>• p₁ = p₂ = p_atmosferica (pressione relativa = 0)</p>
+                        <p>• v₁ ≈ 0 (serbatoio grande, superficie quasi ferma)</p>
+                        <p>• z₁ - z₂ = 3 m</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 3: Semplificare l'equazione</h4>
+                        <p>3 + 0 + 0 = 0 + 0 + v₂²/2g</p>
+                        <p>v₂²/2g = 3 m</p>
+                        <p>v₂² = 3 × 2g = 3 × 2 × 9.81 = 58.86</p>
+                        <p>v₂ = √58.86 = <strong>7.67 m/s</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 4: Calcolare la portata</h4>
+                        <p>Area orifizio: A₂ = π × d²/4 = π × (0.05)²/4 = 1.96 × 10⁻³ m²</p>
+                        <p>Portata: Q = A₂ × v₂ = 1.96 × 10⁻³ × 7.67 = <strong>0.015 m³/s = 15 L/s</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>Passo 5: Verifica con Torricelli</h4>
+                        <p>Formula di Torricelli: v = √(2gh) = √(2 × 9.81 × 3) = 7.67 m/s ✓</p>
+                        <p>
